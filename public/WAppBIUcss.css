@@ -1,0 +1,23 @@
+#conncectCard{
+    background-color: lightgray;
+}
+.btn-karl{
+    padding: 8px;
+    font-size: 18px;
+}
+.btn{
+    width:8cm
+}
+.btn:hover{
+    background-color: darkseagreen;
+}
+
+.mt-2 {
+    margin-top: 2.75rem!important;
+}
+.card {
+    border-radius: 1.25rem;
+}
+#rowLogin{
+    font-size: 18px;
+}
