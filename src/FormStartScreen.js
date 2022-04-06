@@ -8,7 +8,6 @@ function FormStartScreen () {
         return ( 
           <form className="col card mt-2" id="conncectCard"> 
           <RegisterPage/>
-          <RegisterPage/>
           </form> 
         );
 }
