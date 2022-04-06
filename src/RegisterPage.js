@@ -17,20 +17,27 @@ function RegisterPage() {
         setNewUser({ ...newUser, userName: event.target.value })
         console.log(newUser.userName);
     }
-    const handleUserPasswordChange = (event) => {
+    const handlePasswordChange = (event) => {
         setNewUser({ ...newUser, password: event.target.value })
         console.log(newUser.password);
-        validPassword(newUser.password);
     }
     const handleDisplayNameChange = (event) => {
         setNewUser({ ...newUser, display: event.target.value })
         console.log(newUser.display);
-
     }
     const [submitted, setSubmitted] = useState(false);
-    const handleSubmit = (event) => {
+    const [successMessage, setSuccessMessage] = useState(false);
+    const handleSubmit = (event, newUser) => {
         event.preventDefault();
-        setSubmitted(true);
+        validAllandRegister(newUser);
+        var bool = validAllandRegister(newUser);
+        console.log(bool);
+        if(bool){
+            console.log("succedd!!");
+            setSubmitted(true);
+        } else {
+            setSubmitted(false);
+        }
     }
     const validPassword = (newPassword)=>{
         if (!(/\d/.test(newPassword) && /[a-zA-Z]/.test(newPassword))) {
@@ -40,20 +47,30 @@ function RegisterPage() {
         }
     }
     const validUsername = (uname)=>{
-        userList.map((user, key)=>{
-            if(uname == user.userName)
-            return false;
+        for(var i=0; i<userList.length; i++) {
+            if (uname==userList[i].userName){
+                return false;
+            }
         }
-        );
         return true;
     }
-
-    
+    const validAllandRegister = (newUser)=>{
+        if (validPassword(newUser.password) && validUsername(newUser.userName)){
+            userList.push(newUser);
+            setSuccessMessage(true);
+            console.log(userList[userList.length - 2])
+            console.log(userList[userList.length - 1])
+            return true;
+        }
+        return false;
+    }
+   
     return (
         <form
-        onSubmit={handleSubmit} className="col card mt-2" id="conncectCard"> 
-        {submitted ? <div>registerion completed! please go back to login screen</div> : null}
-        
+        onSubmit={e => handleSubmit(e, newUser)}
+        className="col card mt-2"
+        id="conncectCard"> 
+        {(successMessage) ? <div className="alert alert-success">Registerion has been completed! Please go back to <Link to="/">Login screen</Link></div> : null}
             <div className="form-floating mb-3 input-padding-5">
         
                 <input
@@ -65,14 +82,13 @@ function RegisterPage() {
                     name="userName"
                     value={newUser.userName}>
                 </input>
-                {(submitted && !validUsername(newUser.userName)) ? <div className="validation m-1">please select a uniqe user name!</div> : null}
-
+                {(!validUsername(newUser.userName) && !submitted && newUser.userName!="") ? <div className="validation m-1">please select a uniqe user name!</div> : null}
                 <label htmlFor="floatingUser">Username</label>
             </div>
             <>
                 <div className="form-floating mb-3 input-padding-5">
                     <input
-                        onChange={handleUserPasswordChange}
+                        onChange={handlePasswordChange}
                         type="password"
                         className="form-control mt-2"
                         id="floatingPassword"
@@ -80,8 +96,7 @@ function RegisterPage() {
                         name="Password"
                         value={newUser.password}>
                     </input>
-                    {(submitted && !validPassword(newUser.password)) ? <div className="validation m-1">please select at least 1 letter and 1 char!</div> : null}
-
+                    {(!validPassword(newUser.password)  && !submitted && newUser.password != "") ? <div className="validation m-1">please select at least 1 letter and 1 char!</div> : null}
                     <label htmlFor="floatingPassword">Password</label>
                 </div>
             </>
