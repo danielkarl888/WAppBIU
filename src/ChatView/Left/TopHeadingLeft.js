@@ -12,7 +12,7 @@ function TopHeadingLeft() {
                 </span>
             </div>
             <div class="col-sm-2 col-xs-2 heading-compose">
-                <i class="bi bi-person-plus-fill" aria-hidden="true" style={{ marginLeft: "40%" }}></i>
+               <button className="btn-md-2"> <i class="bi bi-person-plus-fill" aria-hidden="true" style={{ marginLeft: "40%" }}></i></button>
                
             </div>
         </div>
