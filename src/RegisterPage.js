@@ -10,7 +10,7 @@ function RegisterPage(){
             <UserNameInput/>
             <PasswordInput/>
             <DisplayNameInput/>
-            <SubmitLoginScreen action1="Register" question="Already registered?" action2="to login"/>
+            <SubmitRegisScreen/>
         </>
     );
 }
