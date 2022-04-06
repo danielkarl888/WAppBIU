@@ -1,4 +1,5 @@
 
+
 .chat {
   position: relative;
   top: 19px;
@@ -27,20 +28,4 @@
     /*overflow-y: auto;*/
     background-color: rgb(219, 139, 35);
   }
-  .top-heading{
-  position: relative;
-  margin: auto;
-  padding: 0;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
-    background-color: rgb(171, 204, 53);
-  }
-  .user-img{
-    position: relative;
-    height: 100%;
-
-  }
-  .add-con-icon{
-    position: relative;
-    height: 100%;
-    
-  }
+ 

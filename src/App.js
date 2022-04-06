@@ -1,6 +1,7 @@
 import './App.css';
 import FormStartScreen from './FormStartScreen';
-
+ 
+import MainView from './ChatView/mainView';
 import LoginPage from './LoginPage';
 import {useState} from 'react';
 import UserNameInput from './Inputs/UserNameInput';
