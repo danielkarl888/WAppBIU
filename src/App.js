@@ -12,6 +12,7 @@ function App() {
         <div className="col-2">
         </div>
         <FormStartScreen/>
+        
         <div className="col-2">
         </div>
       </div>
