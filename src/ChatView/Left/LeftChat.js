@@ -5,7 +5,7 @@ import './LeftChat.css';
 
 function LeftChat() {
     return (
-      <div className="container-left">
+      <div>
 <TopHeadingLeft />
 <SearchBox />
 <Contact />

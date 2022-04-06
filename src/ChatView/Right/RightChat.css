@@ -1,0 +1,74 @@
+.top-heading{
+    position: relative;
+    margin: auto;
+    padding: 0;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
+      background-color: rgb(171, 204, 53);
+    }
+    .user-img{
+      position: relative;
+      height: 100%;
+  
+    }
+    .addConIcon{
+      position: relative;
+      height: 100%;
+    }
+  
+    .heading {
+      padding: 10px 16px 10px 15px;
+      margin: 0;
+      height: 60px;
+      width: 100%;
+      background-color: #eee;
+      z-index: 1000;
+      align-items: center;
+    }
+    
+    .heading-avatar {
+      padding: 0;
+      cursor: pointer;
+    
+    }
+    
+    .heading-avatar-icon{
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+    }
+    .avatar {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      height: 100%;
+    }
+    .heading-compose {
+      padding: 0;
+    }
+    .heading-online {
+        display: block;
+        padding: 0 5px;
+        font-size: 12px;
+        color: #3e852d;
+      }
+    .headingUsername {
+      padding: 0 !important;
+      font-size: large;
+      cursor: pointer;
+    }
+    .searchBox {
+        padding: 0 !important;
+        margin: 0 !important;
+        height: 60px;
+        width: 100%;
+      }
+      .reply {
+        height: 60px;
+        width: 100%;
+        background-color: #f5f1ee;
+        padding: 10px 5px 10px 5px !important;
+        z-index: 1000;
+      }
+      .chatbox{
+      }
