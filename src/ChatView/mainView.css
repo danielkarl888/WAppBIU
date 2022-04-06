@@ -1,0 +1,46 @@
+
+.chat {
+  position: relative;
+  top: 19px;
+  height: 80vh;
+  margin: auto;
+  padding: 0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
+}
+.chat-one{
+  height: 80vh;
+  
+}
+  .leftside {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    position: relative;
+    background-color: rgb(110, 180, 52);
+  }
+  .rightside {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100%;
+    /*width: 100%;*/
+    border-left: 1px solid rgba(0, 0, 0, .08);
+    /*overflow-y: auto;*/
+    background-color: rgb(219, 139, 35);
+  }
+  .top-heading{
+  position: relative;
+  margin: auto;
+  padding: 0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
+    background-color: rgb(171, 204, 53);
+  }
+  .user-img{
+    position: relative;
+    height: 100%;
+
+  }
+  .add-con-icon{
+    position: relative;
+    height: 100%;
+    
+  }
