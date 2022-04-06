@@ -1,16 +1,14 @@
-import DisplayInput from './Inputs/DisplayInput';
-import PasswordInput from './Inputs/PasswordInput';
-import SubmitStartScreen from './Inputs/SubmitStartScreen';
-import UsernameInput from './Inputs/UserNameInput';
+import LoginPage from './LoginPage';
+import UserNameInput from './Inputs/UserNameInput';
+import React from 'react';
+import {useState} from 'react';
+import RegisterPage from './RegisterPage';
+function FormStartScreen () {
 
-function FormStartScreen() {
-    return (
-        <form className="col card mt-2" id="conncectCard">
-        <UsernameInput/>
-        <PasswordInput/>
-        <DisplayInput/>
-        <SubmitStartScreen/>
-        </form>
-    );
+        return ( 
+          <form className="col card mt-2" id="conncectCard"> 
+          <LoginPage/>
+          </form> 
+        );
 }
 export default FormStartScreen;

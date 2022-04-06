@@ -1,4 +1,4 @@
-function UsernameInput() {
+function UserNameInput() {
     
     return (
         <div className="form-floating mb-3 input-padding-5">
@@ -7,4 +7,4 @@ function UsernameInput() {
       </div>
     );
 }
-export default UsernameInput;
+export default UserNameInput;
