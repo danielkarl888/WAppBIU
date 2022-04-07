@@ -31,6 +31,10 @@ function RegisterPage() {
         event.preventDefault();
         validAllandRegister(newUser);
         var bool = validAllandRegister(newUser);
+        setNewUser({userName: "",
+        display: "",
+        password: "",
+        img: ""});
         console.log(bool);
         if(bool){
             console.log("succedd!!");
