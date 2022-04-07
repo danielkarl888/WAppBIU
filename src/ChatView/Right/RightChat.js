@@ -4,7 +4,7 @@ import ChatBox from './ChatBox';
 import ReplayRow from './RepleyRow';
 function RightChat() {
     return (
-        <div>
+        <div >
             <TopheadingRight />
             <ChatBox />
             

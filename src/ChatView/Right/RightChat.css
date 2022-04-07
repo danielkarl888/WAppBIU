@@ -3,7 +3,7 @@
     margin: auto;
     padding: 0;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
-      background-color: rgb(171, 204, 53);
+    background-color: rgb(171, 204, 53);
     }
     .user-img{
       position: relative;
@@ -64,11 +64,60 @@
         width: 100%;
       }
       .reply {
-        height: 60px;
-        width: 100%;
-        background-color: #f5f1ee;
-        padding: 10px 5px 10px 5px !important;
-        z-index: 1000;
+         position: absolute;
+         object-position: center bottom;
+         bottom: 1%;
+         border:none !important;
+         background-color: #f5f1ee;
+         width: 92%;
+         height: 50px;
+         margin-left: 4%;
+         margin-right: 2%;
+         padding: 10px;
+         border-radius: 20px ;
+         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .06), 0 2px 5px 0 rgba(0, 0, 0, .2);
       }
-      .chatbox{
+      .reply-paperclip {
+        padding: 5px !important;
+      }
+      
+      .reply-paperclip i {
+        text-align: center;
+        padding: 5px 5px 5px 5px !important;
+        color: #93918f;
+        cursor: pointer;
+    
+      }
+      .reply-send {
+        padding: 5px !important;
+      }
+      .reply-send i {
+        text-align: center;
+        padding: 5px !important;
+        color: #93918f;
+        cursor: pointer;
+      }
+      .reply-main {
+        padding: 2px 5px !important;
+        align-items: center;
+        height: 90%;
+        position: relative;
+      }
+      
+      .textarea {
+        width: 100%;
+        position: absolute;
+        object-fit:fill;
+        bottom: 1%;
+        top: 1%;
+        padding: 5px !important;
+        
+        text-indent: 5px;
+        
+        height: auto;
+        font-size: 16px;
+        display: block;
+      }
+      .btnGroupDrop1{
+          size: 15px;
       }

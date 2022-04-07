@@ -1,4 +1,8 @@
-
+.conncectCard {
+  border-radius: 25px;
+  border: 2px solid #cad3be;
+  position: relative;
+}
 
 .chat {
   position: relative;
@@ -17,15 +21,19 @@
     margin: 0;
     height: 100%;
     position: relative;
-    background-color: rgb(110, 180, 52);
+    display: block;
+    background-color: rgb(217, 217, 223);
+    border-radius: 0px 0px 0px 25px  ;
+    border: 2px solid #d3d8cd;
   }
   .rightside {
     padding: 0 !important;
     margin: 0 !important;
+    position: relative;
     height: 100%;
-    /*width: 100%;*/
     border-left: 1px solid rgba(0, 0, 0, .08);
-    /*overflow-y: auto;*/
+    overflow-y: auto;
     background-image: url(bg-what.jpg);
+    border-radius: 0px 0px 25px 0px  ;
   }
  
