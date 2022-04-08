@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import userList from './ManagingUsersList/userList';
-
+import PasswordInput from "./Inputs/PasswordInput";
+import LinkToLogin from "./LinkToLogin";
+import LinkToChat from "./LinkToChat";
+import activeUser from "./ManagingUsersList/activeUser"
  
 function LoginPage(){
-    const ConditionalLink = ({ children, to, condition }) => (!condition && to)
-      ? <Link to={to}>{children}</Link>
-      : <>{children}</>;
-
+    
     const [newUser, setNewUser] = useState({
         userName: "",
         display: "",
         password: "",
         img: ""
     });
-    const [correctPassword, setCorrectPassword] = useState(false);
-    const [correctUserName, setCorrectUserName] = useState(false);
-
+    
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
         console.log(newUser.userName);
@@ -25,15 +23,15 @@ function LoginPage(){
         setNewUser({ ...newUser, password: event.target.value })
         console.log(newUser.password);
     }
-
-    const [submitted, setSubmitted] = useState(false);
-    const [successMessage, setSuccessMessage] = useState(false);
     const handleSubmit = (event, newUser) => {
         event.preventDefault();
-        setNewUser({userName: "",
-        display: "",
-        password: "",
-        img: ""});
+        var bool = isValidUser(newUser)
+        if(!bool){
+            setNewUser({userName: "",
+            display: "",
+            password: "",
+            img: ""});
+        }
     }
     const isValidUser = (newUser)=>{
         if(!isExistUsername(newUser.userName)){
@@ -41,6 +39,8 @@ function LoginPage(){
         }
         for(var j =0; j<userList.length;j++){
             if(newUser.password == userList[j].password && newUser.userName == userList[j].userName){
+                activeUser.userName = userList[j].userName;
+                activeUser.display = userList[j].display;
                 return true;
             }
         }
@@ -71,6 +71,7 @@ function LoginPage(){
                     name="userName"
                     value={newUser.userName}>
                 </input>
+                {(!isExistUsername(newUser.userName)) && newUser.userName!=='' ? <div className="validation m-1">user name is not registered!</div> : null}
                 <label htmlFor="floatingUser">Username</label>
             </div>
             <>
@@ -90,13 +91,11 @@ function LoginPage(){
             </>
             <div className="form-floating mb-3 input-padding-5 p-3" id="login">
                 <div className="col-xl-11 col-lg-10 col-md-8 input-padding-5 p-3" id="submit">
-                    <ConditionalLink to='/chat' condition={(newUser)=>isValidUser(newUser)}>
-                        <button type="submit" className="btn btn-primary btn-karl" id="login-btn">
-                            <i className="bi bi-chat-left-dots-fill"></i> Login</button>
-                    </ConditionalLink>
                     <span className="p-3">not Registered? <Link to='/regi' className="link" id="changeToRegister">
                         Click here</Link> to Register</span>
                 </div>
+                {isValidUser(newUser)?<LinkToChat/>: null}
+
             </div>
         </form>
     );

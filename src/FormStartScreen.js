@@ -6,7 +6,6 @@ import RegisterPage from './RegisterPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainView from './ChatView/mainView';
 function FormStartScreen () {
-
         return (
           <> 
           <BrowserRouter>
