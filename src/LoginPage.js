@@ -61,6 +61,9 @@ function LoginPage(){
         onSubmit={e => handleSubmit(e, newUser)}
         className="col card mt-2"
         id="conncectCard"> 
+            <div class="text-center">
+                <h1 class="display-3">Login</h1>
+            </div>
             <div className="form-floating mb-3 input-padding-5">
                 <input
                     onChange={handleUserNameChange}
@@ -90,12 +93,16 @@ function LoginPage(){
                 </div>
             </>
             <div className="form-floating mb-3 input-padding-5 p-3" id="login">
-                <div className="col-xl-11 col-lg-10 col-md-8 input-padding-5 p-3" id="submit">
-                    <span className="p-3">not Registered? <Link to='/regi' className="link" id="changeToRegister">
-                        Click here</Link> to Register</span>
-                </div>
-                {isValidUser(newUser)?<LinkToChat/>: null}
 
+
+                    <div className="text-center" id="submit">
+                        <span>not Registered? <Link to='/regi' className="link" id="changeToRegister">
+                            Click here</Link> to Register!</span>
+                    </div>
+
+                {isValidUser(newUser) ? <LinkToChat /> : null}
+
+                
             </div>
         </form>
     );
