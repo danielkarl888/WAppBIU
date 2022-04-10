@@ -5,12 +5,40 @@ import './LeftChat.css';
 
 function LeftChat() {
     return (
-      <div>
-<TopHeadingLeft />
-<SearchBox />
-<Contact />
-      </div>
+      <span>
+        <TopHeadingLeft />
+        <div className="card" style={{height: "87%"}}>
+          <div className="contacts">
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+            <Contact />
+          </div>
+          </div>
         
+
+      </span>
+
     );
   }
   

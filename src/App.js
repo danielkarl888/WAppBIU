@@ -9,10 +9,10 @@ function App() {
     return (
       <div className="container-fluid">
       <div className="row">
-        <div className="col-2">
+        <div className="col-1">
         </div>
         <FormStartScreen/>
-        <div className="col-2">
+        <div className="col-1">
         </div>
       </div>
     </div>
