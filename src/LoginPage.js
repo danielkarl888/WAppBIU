@@ -74,8 +74,8 @@ function LoginPage(){
                     name="userName"
                     value={newUser.userName}>
                 </input>
-                {(!isExistUsername(newUser.userName)) && newUser.userName!=='' ? <div className="validation m-1">user name is not registered!</div> : null}
-                <label htmlFor="floatingUser">Username</label>
+                {(!isExistUsername(newUser.userName)) && newUser.userName!=='' ? <div className="m-1 badge rounded-pill bg-danger">user name is not registered!</div> : null}
+                <label htmlFor="floatingUser" className="fs-4">Username</label>
             </div>
             <>
                 <div className="form-floating mb-3 input-padding-5">
@@ -88,14 +88,14 @@ function LoginPage(){
                         name="Password"
                         value={newUser.password}>
                     </input>
-                    {(isExistUsername(newUser.userName)) && !isValidUser(newUser) ? <div className="validation m-1">Password is incorrect!</div> : null}
-                    <label htmlFor="floatingPassword">Password</label>
+                    {(isExistUsername(newUser.userName)) && !isValidUser(newUser) ? <div className="m-1 badge rounded-pill bg-danger">Password is incorrect!</div> : null}
+                    <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>
             <div className="form-floating mb-3 input-padding-5 p-3" id="login">
 
 
-                    <div className="text-center" id="submit">
+                    <div className="text-center fs-5" id="submit">
                         <span>not Registered? <Link to='/regi' className="link" id="changeToRegister">
                             Click here</Link> to Register!</span>
                     </div>

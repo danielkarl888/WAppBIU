@@ -92,7 +92,7 @@ function RegisterPage() {
                     value={newUser.userName}>
                 </input>
                 {(!validUsername(newUser.userName) && !submitted && newUser.userName!="") ? <div className=" m-1 badge rounded-pill bg-danger">please select a uniqe user name!</div> : null}
-                <label htmlFor="floatingUser">Username</label>
+                <label htmlFor="floatingUser" className="fs-4">Username</label>
             </div>
             <>
                 <div className="form-floating mb-3 input-padding-5">
@@ -106,7 +106,7 @@ function RegisterPage() {
                         value={newUser.password}>
                     </input>
                     {(!validPassword(newUser.password)  && !submitted && newUser.userName != "") ? <div className="m-1 badge rounded-pill bg-danger">please select at least 1 letter and 1 char!</div> : null}
-                    <label htmlFor="floatingPassword">Password</label>
+                    <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>
             <div className="form-floating mb-3 input-padding-5 ">
@@ -117,17 +117,17 @@ function RegisterPage() {
                 id="floatingDisplay"
                 value={newUser.display}
                  placeholder="Display Name"></input>
-                <label htmlFor="floatingDisplay">Display Name</label>
+                <label htmlFor="floatingDisplay" className="fs-4">Display Name</label>
             </div>
 
             <div className="form-floating mb-3 input-padding-5 p-3" id="register">
                 <div className="col-7" id="submit">
-                    <button  type="submit" className="btn btn-primary btn-karl offset-6" id="register-btn">
+                    <button  type="submit" className="btn btn-primary btn-karl offset-6 fs-4 mb-3" id="register-btn">
                         <i className="bi bi bi-pen-fill"></i> Register</button>
                 </div>
                 <div className="row">
                 <div className='col-4'></div>
-                <div className="col" id="submit" >Already Registered? <Link to='/' className="link" id="changeToLogin">Click here</Link> to Login</div>
+                <div className="col fs-5" id="submit" >Already Registered? <Link to='/' className="link" id="changeToLogin">Click here</Link> to Login</div>
                 <div className='col-2'></div>
                 </div>
             </div>

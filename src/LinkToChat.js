@@ -7,7 +7,7 @@ function LinkToChat() {
         <div className="col-3">
         </div>
         <Link className="col-6 text-center" to='/chat'>
-        <button type="submit" className="btn btn-primary btn-karl" id="login-btn">
+        <button type="submit" className="btn btn-primary btn-karl fs-4 m-3" id="login-btn">
             <i className="bi bi-chat-left-dots-fill"></i> Login</button>
         </Link>        
         <div className="col-3"></div>
