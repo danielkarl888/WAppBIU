@@ -1,3 +1,4 @@
+import activeUser from "../../ManagingUsersList/activeUser";
 function TopHeadingLeft() {
     return (
       
@@ -8,7 +9,7 @@ function TopHeadingLeft() {
                 </div>
             </div>
             <div className="col-sm-8 headingUsername">
-                <span class="name-meta" style={{ marginLeft: "40%"}}>Dvir
+                <span class="name-meta" style={{ marginLeft: "40%"}}>{activeUser.display}
                 </span>
             </div>
             <div class="col-sm-2 col-xs-2 heading-compose">
@@ -16,7 +17,6 @@ function TopHeadingLeft() {
                
             </div>
         </div>
-    
     );
 }
 export default TopHeadingLeft;
