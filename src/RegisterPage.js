@@ -72,6 +72,7 @@ function RegisterPage() {
     return (
         
         <form
+        autoComplete="off"
         onSubmit={e => handleSubmit(e, newUser)}
         className="col card mt-2"
         id="conncectCard">

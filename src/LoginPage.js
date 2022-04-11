@@ -12,7 +12,7 @@ function LoginPage(){
         userName: "",
         display: "",
         password: "",
-        img: ""
+        conversations: ""
     });
     
     const handleUserNameChange = (event) => {
@@ -30,7 +30,7 @@ function LoginPage(){
             setNewUser({userName: "",
             display: "",
             password: "",
-            img: ""});
+            conversations: ""});
         }
     }
     const isValidUser = (newUser)=>{
@@ -41,6 +41,8 @@ function LoginPage(){
             if(newUser.password == userList[j].password && newUser.userName == userList[j].userName){
                 activeUser.userName = userList[j].userName;
                 activeUser.display = userList[j].display;
+                activeUser.conversations = userList[j].conversations;
+                console.log(activeUser.conversations);
                 return true;
             }
         }
@@ -58,6 +60,7 @@ function LoginPage(){
    
     return (
         <form
+        autoComplete="off"
         onSubmit={e => handleSubmit(e, newUser)}
         className="col card mt-2"
         id="conncectCard"> 
