@@ -9,30 +9,14 @@ function LeftChat() {
         <TopHeadingLeft />
         <div className="card" style={{height: "87%"}}>
           <div className="contacts">
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
-            <Contact />
+            <Contact/>
+            <Contact name="noam"/>
+            <Contact name="noam"/>
+            <Contact name="noam"/>
+            <Contact name="noam"/>
+            <Contact name="noam"/>
+            <Contact name="noam"/>
+            <Contact name="noam"/>
           </div>
           </div>
         

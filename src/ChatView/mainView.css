@@ -2,7 +2,8 @@
   border-radius: 25px;
   border: 2% solid #cad3be;
   position: relative;
-  height: 10%;
+  height: 100%;
+  background-color: #cad3be00;
 }
 
 

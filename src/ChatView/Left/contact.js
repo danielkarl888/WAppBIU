@@ -1,3 +1,4 @@
+import contacts from "./contacts";
 
 function Contact() {
     return (
@@ -12,7 +13,7 @@ function Contact() {
                     <div class="row mid-con">
 
                         <div class="row col-xs-8 sideBar-name">
-                            <span class="name-meta ">Daniel
+                            <span class="name-meta ">dvir
                             </span>
                         </div>
                         <div class="row col-xs-4 pull-right last-messege">
@@ -21,7 +22,7 @@ function Contact() {
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3 col-xs-9 sideBar-time"><span class="time-meta pull-right">18:18
+                <div class="col-sm-3 col-xs-9 sideBar-time"><span class="time-meta pull-right">12:00
                 </span>
                 </div>
             </div>
