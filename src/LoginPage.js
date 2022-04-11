@@ -61,8 +61,8 @@ function LoginPage(){
         onSubmit={e => handleSubmit(e, newUser)}
         className="col card mt-2"
         id="conncectCard"> 
-            <div class="text-center">
-                <h1 class="display-3">Login</h1>
+            <div className="text-center">
+                <h1 className="display-3">Login</h1>
             </div>
             <div className="form-floating mb-3 input-padding-5">
                 <input
