@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function SubmitLoginScreen({action1, action2, question}) {    
+function SubmitLoginScreen({action1, action2, question, func}) {    
     return (
       <div className="form-floating mb-3 input-padding-5 p-3" id="login">
         <div className="col-xl-11 col-lg-10 col-md-8 input-padding-5 p-3" id="submit">

@@ -6,10 +6,8 @@ import RegisterPage from './RegisterPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainView from './ChatView/mainView';
 function FormStartScreen () {
-
         return (
           <> 
-          <form className="col card mt-2" id="conncectCard"> 
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LoginPage/>}></Route>
@@ -17,7 +15,6 @@ function FormStartScreen () {
               <Route path="/chat" element={<MainView/>}></Route>
             </Routes>
           </BrowserRouter>
-          </form> 
           </>
         );
 }
