@@ -1,6 +1,6 @@
 import './mainView.css';
-import LeftChat from './LeftChat';
-import RightChat from './RightChat';
+import LeftChat from './Left/LeftChat';
+import RightChat from './Right/RightChat';
 
 function MainView() {
     return (
