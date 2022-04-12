@@ -8,7 +8,7 @@ import activeUser from '../../ManagingUsersList/activeUser';
 function RightChat({conversationsActiveUser,contact,conversationNumber,conversationMessages}) {
     return (
         <span>
-            <TopheadingRight contact={activeUser.conversations[0].username}/>
+            <TopheadingRight contact={contact}/>
             <div className="card mesCon" style={{ height: "70.5%" }}>
                 <div className="contacts">
                 <Message />
