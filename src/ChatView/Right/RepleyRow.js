@@ -1,6 +1,6 @@
 import { useState } from "react";
 import activeUser from "../../ManagingUsersList/activeUser";
-function ReplayRow() {
+function ReplayRow({conversation}) {
     const handleSendText = (event) => {
         event.preventDefault();
         conversationMessages.push(messageText);
@@ -11,9 +11,6 @@ function ReplayRow() {
             context: "",
             time: ""
         });
-    }
-    const setTime = (date) => {
-        setMessageText({ ...messageText, time: date });
     }
 
     const handleMessageChange = (event) => {
