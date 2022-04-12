@@ -1,9 +1,13 @@
 import contacts from "./contacts";
  
-function Contact({name,lastMessageContent,time }) {
+function Contact({key,name,lastMessageContent,time,setContact,converNumber}) {
+    const changeConversation = ()=>{
+        setContact(name);
+        console.log(key);
+    }
     return (
-        <li className="list-group-item">
-            <div className="row sideBar-body">
+        <li onClick={changeConversation} className="list-group-item">
+            <div  className="row sideBar-body">
                 <div className="col-sm-3 col-xs-3 sideBar-avatar">
                     <div className="heading-avatar-icon">
                         <img src="bg-1.jpg" alt="Avatar" className="avatar"></img>

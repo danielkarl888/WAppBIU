@@ -12,9 +12,6 @@ function ReplayRow() {
             time: ""
         });
     }
-    const setTime = (date) => {
-        setMessageText({ ...messageText, time: date });
-    }
 
     const handleMessageChange = (event) => {
         var today = new Date();
