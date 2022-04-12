@@ -125,3 +125,36 @@
       .btnS:hover{
         background-color: rgb(201, 195, 195);
       }
+      .mesCon{
+        border-radius: 0px;
+        background: none;
+        border: none;
+      }
+       .message {
+         margin: 0 !important;
+         width: auto;
+         height: auto;
+         padding-top: 1%;
+         padding-left: 0.5%;
+         position: relative;
+         
+       }
+       .mes-content{
+         width: 40%;
+         background-color: #8cd476be;
+         border-radius: 20px 20px 25px 0px  ;
+       }
+       .mes-text{
+         padding: 5%;
+       }
+       .Outmessage{
+         margin: 0 !important;
+         padding-top: 8%;
+         padding-right: 1%;
+         
+       }
+       .Outmes-content{
+         width: 40%;
+         background-color: #ebeae4d7;
+         border-radius: 20px 20px 0px 25px  ;
+       }
