@@ -1,6 +1,6 @@
 import { useState } from "react";
 import activeUser from "../../ManagingUsersList/activeUser";
-function ReplayRow() {
+function ReplayRow({conversationMessages}) {
     const handleSendText = (event) => {
         event.preventDefault();
         conversationMessages.push(messageText);
@@ -28,12 +28,6 @@ function ReplayRow() {
         }
     );
     const [submitted, setSubmitted] = useState(false);
-    const [conversationNumber, setConversationNumber] = useState(0);
-    const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
-    const [conversationMessages, setConversationMessages] = useState(conversation.messages);
-
-
-
 
     return (
         <div className="row d-flex align-items-center reply">

@@ -9,12 +9,14 @@ function MainView() {
     const [conversationNumber, setConversationNumber] = useState(0);
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
+    const [lastMessage, setLastMessage] = useState(conversationMessages[conversationMessages.length-1].context);
 
     const contactChange = (newName) => {
         setContact(newName);
     }
     const converNumberChange = (number) => {
         setConversationNumber(number);
+        console.log(number);
     }
     return (
 
@@ -23,10 +25,17 @@ function MainView() {
                 <span className="col-4 leftside">
                  <LeftChat conversationsActiveUser={conversationsActiveUser}
                            setContact={contactChange}
-                           converNumber={converNumberChange} />
+                           setConversationMessages={setConversationMessages}
+                           lastMessage={lastMessage}
+                           setLastMessage={setLastMessage} />
                  </span>
-                <span className="col  rightside"> <RightChat conversationsActiveUser={conversationsActiveUser}
-                    contact={contact} /></span>
+                <span className="col rightside"> 
+                    <RightChat
+                        conversationsActiveUser={conversationsActiveUser}
+                        contact={contact}
+                        conversationNumber={conversationNumber}
+                        conversationMessages={conversationMessages} />
+                </span>
             </span>
         </form>
     );

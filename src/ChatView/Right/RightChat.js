@@ -5,8 +5,7 @@ import Message from './Messages';
 import OutComeMessage from './OutComeMess';
 import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
-import { useState } from 'react';
-function RightChat({conversationsActiveUser, contact}) {
+function RightChat({conversationsActiveUser,contact,conversationNumber,conversationMessages}) {
     return (
         <span>
             <TopheadingRight contact={activeUser.conversations[0].username}/>
@@ -33,7 +32,7 @@ function RightChat({conversationsActiveUser, contact}) {
             </div>
 
             
-            <ReplayRow />
+            <ReplayRow conversationMessages={conversationMessages}/>
             
         </span>
 
