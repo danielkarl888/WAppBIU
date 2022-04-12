@@ -1,10 +1,12 @@
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import contacts from "./contacts";
  
-function Contact({key,name,lastMessageContent,time,setContact,converNumber}) {
+function Contact({name,lastMessageContent,time,setContact, converNumberChange,index}) {
     const changeConversation = ()=>{
         setContact(name);
-        console.log(key);
-    }
+        console.log(index);
+        converNumberChange(index);
+        }
     return (
         <li onClick={changeConversation} className="list-group-item">
             <div  className="row sideBar-body">

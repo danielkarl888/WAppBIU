@@ -32,9 +32,6 @@ function ReplayRow() {
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
 
-
-
-
     return (
         <div className="row d-flex align-items-center reply">
             <div className="col-sm-1 col-xs-1 reply-paperclip">

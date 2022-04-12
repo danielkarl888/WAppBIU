@@ -3,11 +3,10 @@ import TopheadingRight from './TopHeadingRight';
 import ChatBox from './ChatBox';
 import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
-import { useState } from 'react';
-function RightChat({conversationsActiveUser, contact}) {
+function RightChat() {
     return (
         <span>
-            <TopheadingRight contact={contact}/>
+            <TopheadingRight contact={activeUser.conversations[0].username}/>
             <ChatBox />
             
             <ReplayRow />

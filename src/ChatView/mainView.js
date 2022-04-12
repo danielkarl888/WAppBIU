@@ -15,6 +15,7 @@ function MainView() {
     }
     const converNumberChange = (number) => {
         setConversationNumber(number);
+        console.log(number);
     }
     return (
 
@@ -23,10 +24,15 @@ function MainView() {
                 <span className="col-4 leftside">
                  <LeftChat conversationsActiveUser={conversationsActiveUser}
                            setContact={contactChange}
-                           converNumber={converNumberChange} />
+                           converNumberChange={converNumberChange} />
                  </span>
-                <span className="col  rightside"> <RightChat conversationsActiveUser={conversationsActiveUser}
-                    contact={contact} /></span>
+                <span className="col rightside"> 
+                    <RightChat
+                        conversationsActiveUser={conversationsActiveUser}
+                        contact={contact}
+                        conversationNumber={conversationNumber}
+                        conversationMessages={conversationMessages} />
+                </span>
             </span>
         </form>
     );
