@@ -10,7 +10,7 @@ function RightChat({conversationsActiveUser, contact}) {
     return (
         <span>
             <TopheadingRight contact={activeUser.conversations[0].username}/>
-            <div className="card mesCon" style={{ height: "70.5%" }}>
+            <div className="card mesCon" style={{ height: "70%" }}>
                 <div className="contacts">
                 <Message />
                 <OutComeMessage />
