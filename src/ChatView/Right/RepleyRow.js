@@ -1,6 +1,6 @@
 import { useState } from "react";
 import activeUser from "../../ManagingUsersList/activeUser";
-function ReplayRow({conversation}) {
+function ReplayRow() {
     const handleSendText = (event) => {
         event.preventDefault();
         conversationMessages.push(messageText);
