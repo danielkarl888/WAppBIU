@@ -24,7 +24,7 @@ function MainView() {
                 <span className="col-4 leftside">
                  <LeftChat conversationsActiveUser={conversationsActiveUser}
                            setContact={contactChange}
-                           converNumberChange={converNumberChange} />
+                           setConversationMessages={setConversationMessages} />
                  </span>
                 <span className="col rightside"> 
                     <RightChat

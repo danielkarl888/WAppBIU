@@ -3,13 +3,13 @@ import TopheadingRight from './TopHeadingRight';
 import ChatBox from './ChatBox';
 import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
-function RightChat() {
+function RightChat({conversationsActiveUser,contact,conversationNumber,conversationMessages}) {
     return (
         <span>
-            <TopheadingRight contact={activeUser.conversations[0].username}/>
+            <TopheadingRight contact={contact}/>
             <ChatBox />
             
-            <ReplayRow />
+            <ReplayRow conversationMessages={conversationMessages}/>
             
         </span>
 
