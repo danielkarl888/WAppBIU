@@ -1,11 +1,12 @@
 import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import contacts from "./contacts";
  
-function Contact({name,lastMessageContent,time,setContact,setConversationMessages,conversationsActiveUser,index}) {
+function Contact({name,lastMessageContent,setLastMessage,time,setContact,setConversationMessages,conversationsActiveUser,index}) {
     const changeConversation = ()=>{
         setContact(name);
         console.log(index);
         setConversationMessages(conversationsActiveUser[index].messages);
+        setLastMessage(conversationsActiveUser[index].messages[conversationsActiveUser[index].messages.length-1])
         }
     return (
         <li onClick={changeConversation} className="list-group-item">
