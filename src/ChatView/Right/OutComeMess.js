@@ -1,10 +1,10 @@
-function OutComeMessage() {
+function OutComeMessage({context}) {
     
     return(
         <div class="Outmessage position-relative">
     <div className="Outmes-content position-absolute top-0 end-0">
         <div className="mes-text">
-            Hi
+            {context}
         </div>
     </div>
 </div>  

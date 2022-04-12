@@ -1,11 +1,11 @@
 
-function Message() {
+function Message({context}) {
     
     return(
         <div class="message">
     <div className="mes-content">
         <div className="mes-text">
-            Hi
+            {context}
         </div>
     </div>
 </div>  
