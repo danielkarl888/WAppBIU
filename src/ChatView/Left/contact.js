@@ -1,6 +1,6 @@
 import contacts from "./contacts";
  
-function Contact({name, lastMessageContent, time}) {
+function Contact({name,lastMessageContent,time }) {
     return (
         <li className="list-group-item">
             <div className="row sideBar-body">

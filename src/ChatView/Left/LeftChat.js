@@ -3,16 +3,20 @@ import SearchBox from "./SearchBox";
 import Contact from "./contact";
 import './LeftChat.css';
 import activeUser from "../../ManagingUsersList/activeUser";
-function LeftChat() {
+import { useState } from "react";
+function LeftChat({conversationsActiveUser}) {
+  const contacts =  conversationsActiveUser.map((conver, key)=>{
+    return <Contact key={key} name={conver.username}
+           lastMessageContent={conver.messages[conver.messages.length-1].context}
+           time={conver.messages[conver.messages.length-1].time}/>
+  })
+
     return (
       <span>
         <TopHeadingLeft />
         <div className="card" style={{height: "87%"}}>
           <div className="contacts">
-            <Contact name={activeUser.conversations[0].username}
-                     lastMessageContent={activeUser.conversations[0].messages[0].context}
-                     time={activeUser.conversations[0].messages[0].time} />
-            <Contact name="dudo" lastMessageContent="hloaaa!!!"/>
+            {contacts}
           </div>
           </div>
       </span>
