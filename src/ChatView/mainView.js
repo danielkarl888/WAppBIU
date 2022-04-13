@@ -34,7 +34,11 @@ function MainView() {
                         conversationsActiveUser={conversationsActiveUser}
                         contact={contact}
                         conversationNumber={conversationNumber}
-                        conversationMessages={conversationMessages} />
+                        conversationMessages={conversationMessages}
+                        setConversationsActiveUser={setConversationsActiveUser}
+                        setConversationNumber={setConversationNumber}
+                        setLastMessage={setLastMessage}
+                         />
                 </span>
             </span>
         </form>
