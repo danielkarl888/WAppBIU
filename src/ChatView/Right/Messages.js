@@ -2,7 +2,7 @@
 function Message({context}) {
     
     return(
-        <div class="message">
+        <div className="message">
     <div className="mes-content">
         <div className="mes-text">
             {context}

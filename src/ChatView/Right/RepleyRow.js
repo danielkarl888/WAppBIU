@@ -31,7 +31,7 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
     const [submitted, setSubmitted] = useState(false);
 
     return (
-        <div className="row d-flex align-items-center reply">
+        <form className="row d-flex align-items-center reply">
             <div className="col-sm-1 col-xs-1 reply-paperclip">
                 <div className="btn-group dropup">
                     <button type="button" className="btn btn dropdown hiddenbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,9 +57,9 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
                     className="form-control  textarea" rows="1" id="comment" placeholder="type a message..."></input>
             </div>
             <div className="col-sm-1 col-xs-1 reply-send">
-                <button onClick={handleSendText} className="btn-bg-transparent hiddenbtn">  <i className="bi bi-send-fill" aria-hidden="true"></i> </button>
+                <button type="submit" onClick={handleSendText} className="btn-bg-transparent hiddenbtn">  <i className="bi bi-send-fill" aria-hidden="true"></i> </button>
             </div>
-        </div>
+        </form>
     );
 }
 export default ReplayRow;
