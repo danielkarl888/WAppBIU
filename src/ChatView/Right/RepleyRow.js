@@ -12,6 +12,7 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
             context: "",
             time: ""
         });
+      
     }
 
     const handleMessageChange = (event) => {
@@ -20,6 +21,7 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
         setMessageText({ ...messageText, context: event.target.value, time: date })
         console.log(messageText);
     }
+    
     const [messageText, setMessageText] = useState(
         {
             src: "send",
@@ -27,6 +29,7 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
             context: "",
             time: ""
         }
+        
     );
     const [submitted, setSubmitted] = useState(false);
 
@@ -57,7 +60,9 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
                     className="form-control  textarea" rows="1" id="comment" placeholder="type a message..."></input>
             </div>
             <div className="col-sm-1 col-xs-1 reply-send">
+
                 <button type="submit" onClick={handleSendText} className="btn-bg-transparent hiddenbtn">  <i className="bi bi-send-fill" aria-hidden="true"></i> </button>
+               
             </div>
         </form>
     );
