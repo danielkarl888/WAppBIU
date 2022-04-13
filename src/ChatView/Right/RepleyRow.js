@@ -1,9 +1,10 @@
 import { useState } from "react";
 import activeUser from "../../ManagingUsersList/activeUser";
-function ReplayRow({conversationMessages}) {
+function ReplayRow({conversationMessages,setConversationsActiveUser,setConversationNumber,setLastMessage}) {
     const handleSendText = (event) => {
         event.preventDefault();
         conversationMessages.push(messageText);
+        setLastMessage(conversationMessages[conversationMessages.length-1].context);
         console.log(conversationMessages);
         setMessageText({
             src: "send",

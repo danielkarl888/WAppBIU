@@ -5,7 +5,8 @@ import Message from './Messages';
 import OutComeMessage from './OutComeMess';
 import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
-function RightChat({conversationsActiveUser,contact,conversationNumber,conversationMessages}) {
+function RightChat({conversationsActiveUser,contact,conversationNumber,conversationMessages,
+    setConversationsActiveUser,setConversationNumber,setLastMessage}) {
     const messagesRender = conversationMessages.map((message,key)=>{
         if(message.src==="send")
             return <Message key={key} context={message.context}/>;
@@ -22,7 +23,11 @@ function RightChat({conversationsActiveUser,contact,conversationNumber,conversat
             </div>
 
             
-            <ReplayRow conversationMessages={conversationMessages}/>
+            <ReplayRow conversationMessages={conversationMessages}
+                setConversationsActiveUser={setConversationsActiveUser}
+                setConversationNumber={setConversationNumber}
+                setLastMessage={setLastMessage}
+            />
             
         </span>
 
