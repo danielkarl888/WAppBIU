@@ -5,35 +5,23 @@ import Message from './Messages';
 import OutComeMessage from './OutComeMess';
 import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
-import { useState } from 'react';
-function RightChat({conversationsActiveUser, contact}) {
+function RightChat({conversationsActiveUser,contact,conversationNumber,conversationMessages}) {
+    const messagesRender = conversationMessages.map((message,key)=>{
+        if(message.src==="send")
+            return <Message key={key} context={message.context}/>;
+        else
+            return <OutComeMessage key={key} context={message.context}/>;
+    })
     return (
         <span>
-            <TopheadingRight contact={activeUser.conversations[0].username}/>
-            <div className="card mesCon" style={{ height: "70%" }}>
+            <TopheadingRight contact={contact}/>
+            <div className="card mesCon" style={{ height: "70.5%" }}>
                 <div className="contacts">
-                <Message />
-                <OutComeMessage />
-                <Message />
-                <OutComeMessage />
-                <Message />
-                <OutComeMessage />
-                <Message />
-                <OutComeMessage />
-                <Message />
-                <OutComeMessage />
-                <Message />
-                <OutComeMessage />
-                <Message />
-                <OutComeMessage />
-                <Message />
-                <OutComeMessage />
-
+                {messagesRender}
                 </div>
             </div>
 
-            
-            <ReplayRow />
+            <ReplayRow conversationMessages={conversationMessages}/>
             
         </span>
 

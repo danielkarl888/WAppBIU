@@ -1,9 +1,11 @@
 import { useState } from "react";
 import activeUser from "../../ManagingUsersList/activeUser";
-function ReplayRow() {
+import Message from "./Messages";
+function ReplayRow({conversationMessages}) {
     const handleSendText = (event) => {
         event.preventDefault();
         conversationMessages.push(messageText);
+        
         console.log(conversationMessages);
         setMessageText({
             src: "send",
@@ -11,6 +13,7 @@ function ReplayRow() {
             context: "",
             time: ""
         });
+      
     }
 
     const handleMessageChange = (event) => {
@@ -19,6 +22,7 @@ function ReplayRow() {
         setMessageText({ ...messageText, context: event.target.value, time: date })
         console.log(messageText);
     }
+    
     const [messageText, setMessageText] = useState(
         {
             src: "send",
@@ -26,14 +30,9 @@ function ReplayRow() {
             context: "",
             time: ""
         }
+        
     );
     const [submitted, setSubmitted] = useState(false);
-    const [conversationNumber, setConversationNumber] = useState(0);
-    const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
-    const [conversationMessages, setConversationMessages] = useState(conversation.messages);
-
-
-
 
     return (
         <div className="row d-flex align-items-center reply">
@@ -62,7 +61,8 @@ function ReplayRow() {
                     className="form-control  textarea" rows="1" id="comment" placeholder="type a message..."></input>
             </div>
             <div className="col-sm-1 col-xs-1 reply-send">
-                <button onClick={handleSendText} className="btn-bg-transparent hiddenbtn">  <i className="bi bi-send-fill" aria-hidden="true"></i> </button>
+                <button onClick={handleSendText} className="btn-bg-transparent hiddenbtn"> <i className="bi bi-send-fill" aria-hidden="true"></i> </button>
+                
             </div>
         </div>
     );

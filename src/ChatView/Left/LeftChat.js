@@ -4,15 +4,17 @@ import Contact from "./contact";
 import './LeftChat.css';
 import activeUser from "../../ManagingUsersList/activeUser";
 import { useState } from "react";
-function LeftChat({conversationsActiveUser, setContact, converNumber}) {
-  const contacts =  conversationsActiveUser.map((conver, key)=>{
-    return <Contact
+function LeftChat({conversationsActiveUser, setContact, setConversationMessages,lastMessage,setLastMessage}) {
+  const contacts =  conversationsActiveUser.map((conver,index)=>{
+        return <Contact
            name={conver.username}
            lastMessageContent={conver.messages[conver.messages.length-1].context}
+           setLastMessage={setLastMessage}
            time={conver.messages[conver.messages.length-1].time}
            setContact={setContact}
-           converNumber={converNumber}
-           key={key}
+           setConversationMessages={setConversationMessages}
+           conversationsActiveUser={conversationsActiveUser}
+           index={index}
            />
   })
 
