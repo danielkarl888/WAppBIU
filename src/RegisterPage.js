@@ -1,7 +1,3 @@
-import PasswordInput from './Inputs/PasswordInput';
-import UserNameInput from './Inputs/UserNameInput';
-import DisplayNameInput from './Inputs/DisplayNameInput';
-import SubmitRegisScreen from './Inputs/SubmitRegisScreen';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import userList from './ManagingUsersList/userList';
@@ -76,8 +72,8 @@ function RegisterPage() {
         onSubmit={e => handleSubmit(e, newUser)}
         className="col card mt-2"
         id="conncectCard">
-        <div class="text-center">
-         <h1 class="display-3">Register</h1>
+        <div className="text-center">
+         <h1 className="display-3">Register</h1>
          </div>
 
 

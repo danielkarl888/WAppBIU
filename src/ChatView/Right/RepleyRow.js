@@ -1,10 +1,12 @@
 import { useState } from "react";
 import activeUser from "../../ManagingUsersList/activeUser";
-function ReplayRow({conversationMessages,setConversationsActiveUser,setConversationNumber,setLastMessage}) {
+import ImageUpload from "./ImageUpload";
+function ReplayRow({conversationMessages,setConversationsActiveUser,setConversationNumber,setLastMessage,setLastMessageType}) {
     const handleSendText = (event) => {
         event.preventDefault();
         conversationMessages.push(messageText);
         setLastMessage(conversationMessages[conversationMessages.length-1].context);
+        setLastMessageType("text");
         console.log(conversationMessages);
         setMessageText({
             src: "send",
@@ -34,6 +36,7 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
     const [submitted, setSubmitted] = useState(false);
 
     return (
+        <>
         <form className="row d-flex align-items-center reply">
             <div className="col-sm-1 col-xs-1 reply-paperclip">
                 <div className="btn-group dropup">
@@ -43,10 +46,14 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
                     <div className="dropdown-menu">
                         <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                             <div className="btn-group-vertical mr-2" role="group" aria-label="First group">
-                                <button type="button" className="btnS"><i className="bi bi-image" style={{ color: "black" }}></i></button>
                                 <button type="button" className="btnS "><i className="bi bi-camera-fill" style={{ color: "black" }}></i></button>
-                                <button type="button" className="btnS "><i className="bi bi-music-note-beamed" style={{ color: "black" }}></i></button>
+                                <button type="button" className="btnS "><i className="bi bi-camera-video-fill" style={{ color: "black" }}></i></button>
                                 <button type="button" className="btnS"><i className="bi bi-mic-fill" style={{ color: "black" }}></i></button>
+
+
+
+                                <button type="button" className="btnS" data-toggle="modal" data-target="#exampleModalCenter"><i className="bi bi-image" style={{ color: "black" }}></i></button>
+                                
                             </div>
                         </div>
                     </div>
@@ -65,6 +72,12 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
                
             </div>
         </form>
+        <ImageUpload conversationMessages={conversationMessages}
+                     setLastMessage={setLastMessage}
+                     setLastMessageType={setLastMessageType}
+        />
+
+            </>
     );
 }
 export default ReplayRow;

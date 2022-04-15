@@ -1,7 +1,5 @@
 import LoginPage from './LoginPage';
-import UserNameInput from './Inputs/UserNameInput';
 import React from 'react';
-import {useState} from 'react';
 import RegisterPage from './RegisterPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainView from './ChatView/mainView';

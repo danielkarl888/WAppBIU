@@ -27,7 +27,8 @@ function MainView() {
                            setContact={contactChange}
                            setConversationMessages={setConversationMessages}
                            lastMessage={lastMessage}
-                           setLastMessage={setLastMessage} />
+                           setLastMessage={setLastMessage}
+                            />
                  </span>
                 <span className="col rightside"> 
                     <RightChat
@@ -38,6 +39,7 @@ function MainView() {
                         setConversationsActiveUser={setConversationsActiveUser}
                         setConversationNumber={setConversationNumber}
                         setLastMessage={setLastMessage}
+                        
                          />
                 </span>
             </span>

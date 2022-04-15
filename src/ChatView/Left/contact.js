@@ -24,7 +24,9 @@ function Contact({name,lastMessageContent,setLastMessage,time,setContact,setConv
                             </span>
                         </div>
                         <div className="row col-xs-4 pull-right last-messege">
-                            <span className="time-meta pull-right">{lastMessageContent}
+                            <span className="time-meta pull-right">
+                            {lastMessageContent}
+                            {<img style={{ width: "60.5%" }} src={lastMessageContent}></img>}
                             </span>
                         </div>
                     </div>

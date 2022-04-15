@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import userList from './ManagingUsersList/userList';
-import PasswordInput from "./Inputs/PasswordInput";
-import LinkToLogin from "./LinkToLogin";
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
  
