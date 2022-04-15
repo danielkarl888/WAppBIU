@@ -1,12 +1,18 @@
 import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import contacts from "./contacts";
  
-function Contact({name,lastMessageContent,setLastMessage,time,setContact,setConversationMessages,conversationsActiveUser,index}) {
+function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLastMessageType,time,setContact,setConversationMessages,conversationsActiveUser,index}) {
     const changeConversation = ()=>{
         setContact(name);
         console.log(index);
         setConversationMessages(conversationsActiveUser[index].messages);
         setLastMessage(conversationsActiveUser[index].messages[conversationsActiveUser[index].messages.length-1])
+        }
+        var messagePreview;
+        if(lastMessageType == "text") {
+            messagePreview= lastMessageContent;
+        } else if (lastMessageType == "image"){
+            messagePreview=<img style={{ width: "20.5%" }} src={lastMessageContent}></img>;
         }
     return (
         <li onClick={changeConversation} className="list-group-item">
@@ -25,8 +31,7 @@ function Contact({name,lastMessageContent,setLastMessage,time,setContact,setConv
                         </div>
                         <div className="row col-xs-4 pull-right last-messege">
                             <span className="time-meta pull-right">
-                            {lastMessageContent}
-                            {<img style={{ width: "60.5%" }} src={lastMessageContent}></img>}
+                            {messagePreview}
                             </span>
                         </div>
                     </div>

@@ -10,13 +10,11 @@ function MainView() {
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
     const [lastMessage, setLastMessage] = useState(conversationMessages[conversationMessages.length-1].context);
+    const [lastMessageType, setLastMessageType] = useState(conversationMessages[conversationMessages.length-1].type);
+
 
     const contactChange = (newName) => {
         setContact(newName);
-    }
-    const converNumberChange = (number) => {
-        setConversationNumber(number);
-        console.log(number);
     }
     return (
 
@@ -28,6 +26,8 @@ function MainView() {
                            setConversationMessages={setConversationMessages}
                            lastMessage={lastMessage}
                            setLastMessage={setLastMessage}
+                           lastMessageType={lastMessageType}
+                           setLastMessageType={setLastMessageType}
                             />
                  </span>
                 <span className="col rightside"> 
