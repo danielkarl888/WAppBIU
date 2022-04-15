@@ -6,7 +6,6 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
         event.preventDefault();
         conversationMessages.push(messageText);
         setLastMessage(conversationMessages[conversationMessages.length-1].context);
-        setLastMessageType("text");
         console.log(conversationMessages);
         setMessageText({
             src: "send",
@@ -14,7 +13,7 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
             context: "",
             time: ""
         });
-      
+        setLastMessageType("text");
     }
 
     const handleMessageChange = (event) => {
@@ -33,7 +32,6 @@ function ReplayRow({conversationMessages,setConversationsActiveUser,setConversat
         }
         
     );
-    const [submitted, setSubmitted] = useState(false);
 
     return (
         <>
