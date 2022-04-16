@@ -1,4 +1,4 @@
-function OutComeMessage({context}) {
+function OutComeMessage({context, time}) {
     
     return(
         <div className="Outmessage position-relative">
@@ -6,6 +6,7 @@ function OutComeMessage({context}) {
         <div className="mes-text">
             {context}
         </div>
+        <div className="mes-text-time">{time}</div>
     </div>
 </div>  
     );

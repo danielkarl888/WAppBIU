@@ -10,20 +10,20 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
     const messagesRender = conversationMessages.map((message, key) => {
         if (message.type == "text") {
             if (message.src === "send")
-                return <Message key={key} context={message.context} />;
+                return <Message key={key} context={message.context} time={message.time} />;
             else
-                return <OutComeMessage key={key} context={message.context} />;
+                return <OutComeMessage key={key} context={message.context} time={message.time} />;
         } else if (message.type == "image") {
             if (message.src === "send")
-                return <Message key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} />;
+                return <Message key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} time={message.time} />;
             else
-                return <OutComeMessage key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} />;
+                return <OutComeMessage key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} time={message.time} />;
         }
         else if (message.type == "video") {
             if (message.src === "send")
-                return <Message key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} />;
+                return <Message key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} time={message.time} />;
             else
-            return <OutComeMessage key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} />;
+            return <OutComeMessage key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} time={message.time} />;
         }
     })
     return (

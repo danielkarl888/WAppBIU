@@ -1,7 +1,8 @@
 import { useState } from "react";
-import activeUser from "../../ManagingUsersList/activeUser";
 import ImageUpload from "./ImageUpload";
 import VideoUpload from "./VideoUpload";
+import VoiceUpload from "./VoiceUpload";
+
 function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType }) {
     const handleSendText = (event) => {
         event.preventDefault();
@@ -47,10 +48,7 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                                 <div className="btn-group-vertical mr-2" role="group" aria-label="First group">
                                     <button type="button" className="btnS" ><i className="bi bi-camera-fill" style={{ color: "black" }}></i></button>
                                     <button type="button" className="btnS " data-toggle="modal" data-target="#videoModal"><i className="bi bi-camera-video-fill" style={{ color: "black" }}></i></button>
-                                    <button type="button" className="btnS"><i className="bi bi-mic-fill" style={{ color: "black" }}></i></button>
-
-
-
+                                    <button type="button" className="btnS" data-toggle="modal" data-target="#voiceModal"><i className="bi bi-mic-fill" style={{ color: "black" }}></i></button>
                                     <button type="button" className="btnS" data-toggle="modal" data-target="#imageModal"><i className="bi bi-image" style={{ color: "black" }}></i></button>
 
                                 </div>
@@ -76,6 +74,11 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                 setLastMessageType={setLastMessageType}
             />
             <VideoUpload
+                conversationMessages={conversationMessages}
+                setLastMessage={setLastMessage}
+                setLastMessageType={setLastMessageType}
+            />
+            <VoiceUpload
                 conversationMessages={conversationMessages}
                 setLastMessage={setLastMessage}
                 setLastMessageType={setLastMessageType}

@@ -48,6 +48,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
                         <form className="mb-3">
                             <label htmlFor="formFile" className="form-label">select image here</label>
                             <input
+                            
                                 accept="image/*"
                                 className="form-control"
                                 type="file"
