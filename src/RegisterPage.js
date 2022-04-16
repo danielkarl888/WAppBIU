@@ -48,7 +48,7 @@ function RegisterPage() {
     }
     const validUsername = (uname)=>{
         for(var i=0; i<userList.length; i++) {
-            if (uname==userList[i].userName){
+            if (uname===userList[i].userName){
                 return false;
             }
         }

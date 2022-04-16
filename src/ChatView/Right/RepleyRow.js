@@ -17,10 +17,17 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
         });
         setLastMessageType("text");
     }
-
+    function addZero(i) {
+        if (i < 10) {i = "0" + i}
+        return i;
+      }
+      
+          
     const handleMessageChange = (event) => {
-        var today = new Date();
-        var date = today.getHours() + ":" + today.getMinutes();
+        const today = new Date();
+        let h = addZero(today.getHours());
+        let m = addZero(today.getMinutes());
+        var date = h + ":" + m;
         setMessageText({ ...messageText, context: event.target.value, time: date })
         console.log(messageText);
     }
