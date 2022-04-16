@@ -7,7 +7,7 @@ function RegisterPage() {
         userName: "",
         display: "",
         password: "",
-        img: ""
+        conversations: [{ username: "", messages: [{ src: "", type: "", context: "", time: "" }]}]
     });
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
@@ -30,7 +30,7 @@ function RegisterPage() {
         setNewUser({userName: "",
         display: "",
         password: "",
-        img: ""});
+        conversations: [{ username: "", messages: [{ src: "", type: "", context: "", time: "" }]}]});
         console.log(bool);
         if(bool){
             console.log("succedd!!");
@@ -66,7 +66,7 @@ function RegisterPage() {
     }
    
     return (
-        
+        <>
         <form
         autoComplete="off"
         onSubmit={e => handleSubmit(e, newUser)}
@@ -102,7 +102,7 @@ function RegisterPage() {
                         name="Password"
                         value={newUser.password}>
                     </input>
-                    {(!validPassword(newUser.password)  && !submitted && newUser.userName != "") ? <div className="m-1 badge rounded-pill bg-danger">please select at least 1 letter and 1 char!</div> : null}
+                    {(!validPassword(newUser.password)  && !submitted && newUser.userName != "") ? <div className="m-1 badge rounded-pill bg-danger">please select at least 1 letter and 1 number!</div> : null}
                     <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>
@@ -128,11 +128,9 @@ function RegisterPage() {
                 <div className='col-2'></div>
                 </div>
             </div>
-
-
-
-
         </form>
+
+        </>
     );
 }
 export default RegisterPage;

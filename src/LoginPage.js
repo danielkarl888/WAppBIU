@@ -57,6 +57,8 @@ function LoginPage(){
 
    
     return (
+        <>
+        <div className="col-2"></div>
         <form
         autoComplete="off"
         onSubmit={e => handleSubmit(e, newUser)}
@@ -106,6 +108,9 @@ function LoginPage(){
                 
             </div>
         </form>
+        <div className="col-2"></div>
+
+        </>
     );
 }
 export default LoginPage;
