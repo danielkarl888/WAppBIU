@@ -13,6 +13,8 @@ function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLast
             messagePreview= lastMessageContent;
         } else if (lastMessageType == "image"){
             messagePreview=<img style={{ width: "20.5%" }} src={lastMessageContent}></img>;
+        } else if (lastMessageType == "video"){
+            messagePreview=<video style={{ width: "20.5%" }} src={lastMessageContent}></video>;
         }
     return (
         <li onClick={changeConversation} className="list-group-item">

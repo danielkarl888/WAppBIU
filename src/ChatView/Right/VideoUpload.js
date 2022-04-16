@@ -1,25 +1,24 @@
 import { useState } from "react";
-function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
-    const [file, setFile] = useState();
-    const [messageImage, setMessageImage] = useState(
+function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
+    const [messageVideo, setMessageVideo] = useState(
         {
             src: "send",
-            type: "image",
+            type: "video",
             context: "",
             time: ""
         });
     const handleSendImage = (event) => {
         event.preventDefault();
-        conversationMessages.push(messageImage);
+        conversationMessages.push(messageVideo);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
-        setLastMessageType("image")
-        console.log(conversationMessages);
-        setMessageImage({
+        setLastMessageType("video");
+        setMessageVideo({
             src: "send",
-            type: "image",
+            type: "video",
             context: "",
             time: ""
         });
+        console.log(conversationMessages);
     }
     function handleChange(e) {
         var reader = new FileReader();
@@ -28,30 +27,30 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
             console.log(base64data);      
             var today = new Date();
             var date = today.getHours() + ":" + today.getMinutes();    
-            setMessageImage({ ...messageImage, context: base64data, time: date })
+            setMessageVideo({ ...messageVideo, context: base64data, time: date })
         }
         reader.readAsDataURL(e.target.files[0]);
-        console.log(messageImage);
+        console.log(messageVideo);
     }
 
     return (
-        <div className="modal fade" id="imageModal" tabIndex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+        <div className="modal fade" id="videoModal" tabIndex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">Please Upload image</h5>
+                        <h5 className="modal-title" id="exampleModalLongTitle">Please Upload video</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <form className="mb-3">
-                            <label htmlFor="formFile" className="form-label">select image here</label>
+                            <label htmlFor="formVideoFile" className="form-label">select video here</label>
                             <input
-                                accept="image/*"
+                                accept="video/*"
                                 className="form-control"
                                 type="file"
-                                id="formFile"
+                                id="formVideoFile"
                                 onChange={handleChange}
                             ></input>
                             <div className="modal-footer">
@@ -64,4 +63,4 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
         </div>
     );
 }
-export default ImageUpload;
+export default VideoUpload;
