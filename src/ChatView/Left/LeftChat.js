@@ -7,6 +7,7 @@ import { useState } from "react";
 function LeftChat({conversationsActiveUser, setContact, setConversationMessages,
                   lastMessage,setLastMessage,lastMessageType,setLastMessageType}) {
   const contacts =  conversationsActiveUser.map((conver,index)=>{
+      if(conver.username!="")
         return <Contact
            name={conver.username}
            lastMessageContent={conver.messages[conver.messages.length-1].context}
