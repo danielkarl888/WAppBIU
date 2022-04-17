@@ -43,11 +43,11 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
                     reader.readAsDataURL(blob);
                 }
             }
-            recorder.start(1000);
+            recorder.start(2000);
         })
         setTimeout(() => {
             recorder.stop();
-        }, 5000)
+        }, 30000)
     }    
     
     
