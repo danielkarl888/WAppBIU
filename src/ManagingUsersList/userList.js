@@ -7,14 +7,14 @@ const userList = [{
     },
     {
         username: "tzvi",
-        messages: [{ src: "send", type: "text", context: "jjjhjhj", time: "10:22" }, { src: "recv", type: "text", context: "fooo", time: "4:58" }]
+        messages: [{ src: "send", type: "text", context: "barrr", time: "10:22" }, { src: "recv", type: "text", context: "fooo", time: "04:58" }]
     }]
 },
 {
     userName: 'dvir', display: 'dvir', password: 'dvir!',
     conversations: [{
         username: "daniel",
-        messages: [{ src: "send", type: "text", context: "hi", time: "8:23" }, { src: "recv", type: "text", context: "bii", time: "6:33" }]
+        messages: [{ src: "send", type: "text", context: "hi", time: "08:23" }, { src: "recv", type: "text", context: "bii", time: "06:33" }]
     }]
 },
 {

@@ -7,11 +7,10 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
             context: "",
             time: ""
         });
-    const handleSendImage = (event) => {
+    const handleSendVoice = (event) => {
         event.preventDefault();
         conversationMessages.push(messagevoice);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
-        setLastMessageType("voice");
         setMessageVoice({
             src: "send",
             type: "voice",
@@ -20,32 +19,38 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
         console.log(conversationMessages);
     }
-    function handleChange(e) {
+
+
+    const onRecord = (e) => {
+        e.preventDefault();
         var reader = new FileReader();
         reader.onloadend = function () {
             var base64data = reader.result; 
-            console.log(base64data);      
+            console.log(base64data);
             var today = new Date();
-            var date = today.getHours() + ":" + today.getMinutes();    
+            var date = today.getHours() + ":" + today.getMinutes();
             setMessageVoice({ ...messagevoice, context: base64data, time: date })
         }
-        reader.readAsDataURL(e.target.files[0]);
-        console.log(messagevoice);
-    }
-
-    const onRecord = ()=>{
-        var device= navigator.mediaDevices.getUserMedia({audio: true});
-        var item =[];
+        var device = navigator.mediaDevices.getUserMedia({ audio: true });
+        var items = [];
+        var recorder;
         device.then(stream => {
-            var recorder = new MediaRecorder(stream);
-            recorder.ondataavailable = e=>{
-                if(recorder.state == 'inactive') {
-                    var blob=new Blob(item, {type: 'audio/webm'});
-            
+            recorder = new MediaRecorder(stream);
+            recorder.ondataavailable = e => {
+                items.push(e.data);
+                if (recorder.state == 'inactive') {
+                    var blob = new Blob(items, { type: 'audio/webm' });
+                    reader.readAsDataURL(blob);
                 }
             }
-        })    
-    }
+            recorder.start(1000);
+        })
+        setTimeout(() => {
+            recorder.stop();
+        }, 5000)
+    }    
+    
+    
     
 
 
@@ -61,9 +66,9 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
                     </div>
                     <div className="modal-body">
                         <form>
-                            <button onClick={onRecord} className="btn btn-danger offset-2 fs-4 mb-3"><i class="bi bi-record-circle"></i></button>
+                            <button onClick={onRecord} className="btn btn-danger offset-2 fs-4 mb-3"><i className="bi bi-record-circle"></i></button>
                             <div className="modal-footer">
-                                <button onClick={handleSendImage} type="submit" className="btn btn-primary" data-dismiss="modal">Upload Voice</button>
+                                <button onClick={handleSendVoice} type="submit" className="btn btn-primary" data-dismiss="modal">Upload Voice</button>
                             </div>
                         </form>
                     </div>

@@ -24,6 +24,15 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
                 return <Message key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} time={message.time} />;
             else
             return <OutComeMessage key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} time={message.time} />;
+        } else {
+            if (message.src === "send")
+                return <Message key={key} context={
+                <audio controls="controls" style={{ width: "100%" }}  >
+                <source src={message.context} type="video/webm"></source></audio>} time={message.time} />;
+            else
+            return <OutComeMessage key={key} context={
+                <audio controls="controls" style={{ width: "100%" }}  >
+                <source src={message.context} type="video/webm"></source></audio>} time={message.time} />;
         }
     })
     return (

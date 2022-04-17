@@ -39,7 +39,6 @@ function MainView() {
                         setConversationsActiveUser={setConversationsActiveUser}
                         setConversationNumber={setConversationNumber}
                         setLastMessage={setLastMessage}
-                        
                          />
                 </span>
             </span>
