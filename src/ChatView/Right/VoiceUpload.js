@@ -1,15 +1,52 @@
+
 import { useState } from "react";
+
 function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
-    const [messagevoice, setMessageVoice] = useState(
+    let recorder;
+    const [messageVoice, setMessageVoice] = useState(
         {
             src: "send",
             type: "voice",
             context: "",
             time: ""
         });
+
+        function addZero(i) {
+            if (i < 10) {i = "0" + i}
+            return i;
+          }
+        const onRecord = (e) => {
+            e.preventDefault();
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                var base64data = reader.result; 
+                var today = new Date();
+                let h = addZero(today.getHours());
+                let m = addZero(today.getMinutes());
+                var date = h + ":" + m;
+                console.log(base64data);
+                setMessageVoice({ ...messageVoice, context: base64data, time: date });
+                console.log(messageVoice);
+            }
+            var device = navigator.mediaDevices.getUserMedia({ audio: true });
+            var items = [];
+            device.then(stream => {
+                recorder = new MediaRecorder(stream);
+                recorder.ondataavailable = e => {
+                    items.push(e.data);
+                }
+                recorder.onstop = e => {
+                        var blob = new Blob(items, { type: 'audio/webm' });
+                        reader.readAsDataURL(blob);
+                }
+                recorder.start();
+            })
+        }
     const handleSendVoice = (event) => {
         event.preventDefault();
-        conversationMessages.push(messagevoice);
+        recorder.stop();
+        if(messageVoice.context!="")
+        conversationMessages.push(messageVoice);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setMessageVoice({
             src: "send",
@@ -21,34 +58,7 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
     }
 
 
-    const onRecord = (e) => {
-        e.preventDefault();
-        var reader = new FileReader();
-        reader.onloadend = function () {
-            var base64data = reader.result; 
-            console.log(base64data);
-            var today = new Date();
-            var date = today.getHours() + ":" + today.getMinutes();
-            setMessageVoice({ ...messagevoice, context: base64data, time: date })
-        }
-        var device = navigator.mediaDevices.getUserMedia({ audio: true });
-        var items = [];
-        var recorder;
-        device.then(stream => {
-            recorder = new MediaRecorder(stream);
-            recorder.ondataavailable = e => {
-                items.push(e.data);
-                if (recorder.state == 'inactive') {
-                    var blob = new Blob(items, { type: 'audio/webm' });
-                    reader.readAsDataURL(blob);
-                }
-            }
-            recorder.start(2000);
-        })
-        setTimeout(() => {
-            recorder.stop();
-        }, 30000)
-    }    
+    
     
     
     

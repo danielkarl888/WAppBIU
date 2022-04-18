@@ -20,13 +20,19 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
         console.log(conversationMessages);
     }
+    function addZero(i) {
+        if (i < 10) {i = "0" + i}
+        return i;
+      }
     function handleChange(e) {
         var reader = new FileReader();
         reader.onloadend = function () {
             var base64data = reader.result; 
             console.log(base64data);      
             var today = new Date();
-            var date = today.getHours() + ":" + today.getMinutes();    
+            let h = addZero(today.getHours());
+            let m = addZero(today.getMinutes());
+            var date = h + ":" + m;
             setMessageVideo({ ...messageVideo, context: base64data, time: date })
         }
         reader.readAsDataURL(e.target.files[0]);
