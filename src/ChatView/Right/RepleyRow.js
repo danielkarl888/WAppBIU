@@ -6,6 +6,7 @@ import VoiceUpload from "./VoiceUpload";
 function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType }) {
     const handleSendText = (event) => {
         event.preventDefault();
+        if(messageText.context!="")
         conversationMessages.push(messageText);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         console.log(conversationMessages);

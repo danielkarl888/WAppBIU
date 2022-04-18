@@ -10,6 +10,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
     const handleSendImage = (event) => {
         event.preventDefault();
+        if(messageImage.context!="")
         conversationMessages.push(messageImage);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setLastMessageType("image")

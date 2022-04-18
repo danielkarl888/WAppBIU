@@ -9,6 +9,7 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
     const handleSendImage = (event) => {
         event.preventDefault();
+        if(messageVideo.context!="")
         conversationMessages.push(messageVideo);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setLastMessageType("video");

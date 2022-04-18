@@ -28,10 +28,11 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
                 setMessageVoice({ ...messageVoice, context: base64data, time: date });
                 console.log(messageVoice);
             }
-            var device = navigator.mediaDevices.getUserMedia({ audio: true });
+            var device =  navigator.mediaDevices.getUserMedia({ audio: true });
             var items = [];
             device.then(stream => {
                 recorder = new MediaRecorder(stream);
+                console.log(recorder.state);
                 recorder.ondataavailable = e => {
                     items.push(e.data);
                 }
@@ -42,6 +43,8 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
                 recorder.start();
             })
         }
+          
+          
     const handleSendVoice = (event) => {
         event.preventDefault();
         recorder.stop();
