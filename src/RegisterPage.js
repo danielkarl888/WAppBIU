@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import userList from './ManagingUsersList/userList';
+import activeUser from "./ManagingUsersList/activeUser";
 function RegisterPage() {
 
     const [newUser, setNewUser] = useState({
         userName: "",
         display: "",
         password: "",
-        conversations: [{ username: "", messages: [{ src: "", type: "", context: "", time: "" }]}]
+        conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]
     });
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
@@ -30,7 +31,7 @@ function RegisterPage() {
         setNewUser({userName: "",
         display: "",
         password: "",
-        conversations: [{ username: "", messages: [{ src: "", type: "", context: "", time: "" }]}]});
+        conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]});
         console.log(bool);
         if(bool){
             console.log("succedd!!");
@@ -58,6 +59,10 @@ function RegisterPage() {
         if (validPassword(newUser.password) && validUsername(newUser.userName)){
             userList.push(newUser);
             setSuccessMessage(true);
+            activeUser.conversations=newUser.conversations;
+            activeUser.userName=newUser.userName;
+            activeUser.display=newUser.display;
+            console.log(activeUser);
             console.log(userList[userList.length - 2])
             console.log(userList[userList.length - 1])
             return true;
@@ -77,7 +82,6 @@ function RegisterPage() {
          </div>
 
 
-        {(successMessage) ? <div className="alert alert-success alert-dismissible" role="alert"><strong>Registerion has been completed!</strong> Please go back to <Link to="/">Login screen</Link></div> : null}
             <div className="form-floating mb-3 input-padding-5">
                 <input
                     onChange={handleUserNameChange}
@@ -121,6 +125,9 @@ function RegisterPage() {
                 <div className="col-7" id="submit">
                     <button  type="submit" className="btn btn-primary btn-karl offset-6 fs-4 mb-3" id="register-btn">
                         <i className="bi bi bi-pen-fill"></i> Register</button>
+                </div>
+                <div className="col-7" id="submit">
+                {(successMessage) ? <Link to='/chat'><button  className="btn btn-success btn-karl offset-6 fs-4 mb-3" id="register-btn"><i className="bi bi-whatsapp"></i> Start Chatting!</button></Link> : null}
                 </div>
                 <div className="row">
                 <div className='col-4'></div>

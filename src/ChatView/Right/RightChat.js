@@ -8,6 +8,7 @@ import activeUser from '../../ManagingUsersList/activeUser';
 function RightChat({ conversationsActiveUser, contact, conversationNumber, conversationMessages,
     setConversationsActiveUser, setConversationNumber, setLastMessage }) {
     const messagesRender = conversationMessages.map((message, key) => {
+        if(message.context!="")
         if (message.type == "text") {
             if (message.src === "send")
                 return <Message key={key} context={message.context} time={message.time} />;
