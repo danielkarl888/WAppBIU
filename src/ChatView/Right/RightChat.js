@@ -50,6 +50,7 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
                 setConversationsActiveUser={setConversationsActiveUser}
                 setConversationNumber={setConversationNumber}
                 setLastMessage={setLastMessage}
+                contact={contact}
             />
 
         </span>

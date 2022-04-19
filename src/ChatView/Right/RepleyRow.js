@@ -3,10 +3,10 @@ import ImageUpload from "./ImageUpload";
 import VideoUpload from "./VideoUpload";
 import VoiceUpload from "./VoiceUpload";
 
-function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType }) {
+function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType,contact }) {
     const handleSendText = (event) => {
         event.preventDefault();
-        if(messageText.context!="")
+        if(messageText.context!="" && contact!="")
         conversationMessages.push(messageText);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         console.log(conversationMessages);
@@ -80,16 +80,19 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
             <ImageUpload conversationMessages={conversationMessages}
                 setLastMessage={setLastMessage}
                 setLastMessageType={setLastMessageType}
+                contact={contact}
             />
             <VideoUpload
                 conversationMessages={conversationMessages}
                 setLastMessage={setLastMessage}
                 setLastMessageType={setLastMessageType}
+                contact={contact}
             />
             <VoiceUpload
                 conversationMessages={conversationMessages}
                 setLastMessage={setLastMessage}
                 setLastMessageType={setLastMessageType}
+                contact={contact}
             />
 
         </>

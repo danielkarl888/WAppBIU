@@ -1,5 +1,5 @@
 import activeUser from "../../ManagingUsersList/activeUser";
-function TopHeadingLeft() {
+function TopHeadingLeft({conversationsActiveUser, setConversationsActiveUser}) {
     return (
 
         <div className="container-fluid row heading">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
+function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType,contact }) {
     const [messageVideo, setMessageVideo] = useState(
         {
             src: "send",
@@ -9,7 +9,7 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
     const handleSendImage = (event) => {
         event.preventDefault();
-        if(messageVideo.context!="")
+        if(messageVideo.context!="" && contact!="")
         conversationMessages.push(messageVideo);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setLastMessageType("video");

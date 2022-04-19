@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 
-function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
+function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType,contact }) {
     let recorder;
     const [messageVoice, setMessageVoice] = useState(
         {
@@ -48,7 +48,7 @@ function VoiceUpload({ conversationMessages, setLastMessage,setLastMessageType }
     const handleSendVoice = (event) => {
         event.preventDefault();
         recorder.stop();
-        if(messageVoice.context!="")
+        if(messageVoice.context!=""&& contact!="")
         conversationMessages.push(messageVoice);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setMessageVoice({

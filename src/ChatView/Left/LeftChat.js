@@ -5,7 +5,7 @@ import './LeftChat.css';
 import activeUser from "../../ManagingUsersList/activeUser";
 import { useState } from "react";
 function LeftChat({conversationsActiveUser, setContact, setConversationMessages,
-                  lastMessage,setLastMessage,lastMessageType,setLastMessageType}) {
+                  lastMessage,setLastMessage,lastMessageType,setLastMessageType,setConversationsActiveUser}) {
   const contacts =  conversationsActiveUser.map((conver,index)=>{
       if(conver.username!="")
         return <Contact
@@ -24,7 +24,9 @@ function LeftChat({conversationsActiveUser, setContact, setConversationMessages,
 
     return (
       <span>
-        <TopHeadingLeft />
+        <TopHeadingLeft 
+        conversationsActiveUser={conversationsActiveUser}
+        setConversationsActiveUser={setConversationsActiveUser} />
         <div className="card" style={{height: "87%"}}>
           <div className="contacts">
           {contacts}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
+function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType,contact }) {
     const [file, setFile] = useState();
     const [messageImage, setMessageImage] = useState(
         {
@@ -10,7 +10,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
     const handleSendImage = (event) => {
         event.preventDefault();
-        if(messageImage.context!="")
+        if(messageImage.context!="" && contact!="")
         conversationMessages.push(messageImage);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setLastMessageType("image")
