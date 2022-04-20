@@ -3,7 +3,6 @@ import { useState } from 'react';
 import userList from './ManagingUsersList/userList';
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
- 
 function LoginPage(){
     
     const [newUser, setNewUser] = useState({
