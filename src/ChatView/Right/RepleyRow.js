@@ -45,7 +45,6 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                         <div className="dropdown-menu">
                             <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div className="btn-group-vertical mr-2" role="group" aria-label="First group">
-                                    <button type="button" className="btnS" ><i className="bi bi-camera-fill" style={{ color: "black" }}></i></button>
                                     <button type="button" className="btnS " data-toggle="modal" data-target="#videoModal"><i className="bi bi-camera-video-fill" style={{ color: "black" }}></i></button>
                                     <button type="button" className="btnS"><i className="bi bi-mic-fill" style={{ color: "black" }}></i></button>
 
