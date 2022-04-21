@@ -71,9 +71,9 @@ function VoiceUpload({ conversationMessages, setLastMessage, setLastMessageType,
                     </div>
                     <div className="modal-body">
                         <form>
-                            <button onClick={onRecord} className="btn btn-danger offset-2 fs-4 mb-3"><i className="bi bi-record-circle"> record</i></button>
+                            <button onClick={onRecord} className="btn btn-danger offset-2 fs-4 mb-3"><i className="bi bi-record-circle"> Start Record</i></button>
                             <div>
-                                <button onClick={handleSendVoice} type="submit" className="btn btn-md btn-primary offset-2  mb-3" data-dismiss="modal">Click Here after record!</button>
+                                <button onClick={handleSendVoice} type="submit" className="btn btn-md btn-primary offset-2  mb-3" data-dismiss="modal"><i class="bi bi-stop-circle-fill"></i> Stop record</button>
                             </div>
                         </form>
                     </div>
