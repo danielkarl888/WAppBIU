@@ -96,6 +96,21 @@
         color: #93918f;
         cursor: pointer;
       }
+      .hiddenbtn{
+        border: none;
+        background: none;
+         align-content: center;
+         width: 100%;
+         position: relative;
+        }
+        .hiddenbtn:hover{
+          background-color: rgb(201, 195, 195);
+          vertical-align: middle;
+          border-radius: 50%;
+          height: 100%;
+          
+        }
+    
       
       .textarea {
         position: relative;
@@ -106,6 +121,8 @@
         text-indent: 5px;
         font-size: 16px;
       }
+      
+        
       
       .dropdown-menu{
         position: relative;
@@ -131,6 +148,15 @@
         background: none;
         border: none;
       }
+      .messagesArea{
+        overflow-y: auto;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      
+      margin-bottom: 100%;
+      }
+
        .message {
          margin: 0 !important;
          width: auto;

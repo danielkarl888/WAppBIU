@@ -17,7 +17,7 @@ function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser })
                 </span>
             </div>
             <div className="col-sm-2 col-xs-2 heading-compose">
-                <button type="button" className="btn-bg-transparent hiddenbtn" data-toggle="modal" data-target="#addModal"> <i className="bi bi-person-plus-fill" aria-hidden="true" style={{ marginLeft: "40%" }}></i> </button>
+                <button type="button" className="btn btn-outline-secondary hiddenbtnAdd" data-toggle="modal" data-target="#addModal"> <i className="bi bi-person-plus-fill" aria-hidden="true" style={{ marginLeft: "40%" }}></i> </button>
 
             </div>
         </div>
