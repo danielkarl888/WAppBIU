@@ -16,7 +16,7 @@ function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLast
         } else if (lastMessageType == "video"){
             messagePreview=<video style={{ width: "20.5%" }} src={lastMessageContent}></video>;
         } else {
-            messagePreview=<div>audio<i class="bi bi-headphones"></i></div>;
+            messagePreview=<div>audio<i className="bi bi-headphones"></i></div>;
         }
     return (
         <li onClick={changeConversation} className="list-group-item">

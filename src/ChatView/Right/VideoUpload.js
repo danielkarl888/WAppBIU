@@ -51,7 +51,7 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType,c
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form className="mb-3">
+                        <div className="mb-3">
                             <label htmlFor="formVideoFile" className="form-label"><strong>Select Video here:</strong></label>
                             <input
                                 accept="video/*"
@@ -63,7 +63,7 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType,c
                             <div className="modal-footer">
                                 <button onClick={handleSendImage} type="submit" className="btn btn-primary" data-dismiss="modal">Send</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

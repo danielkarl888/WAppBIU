@@ -59,7 +59,7 @@ function VoiceUpload({ conversationMessages, setLastMessage, setLastMessageType,
 
 
     return (
-        <div className="modal fade" id="voiceModal" tabIndex="- " role="dialog" aria-labelledby="voiceModal" aria-hidden="true">
+        <div className="modal fade" id="voiceModal" tabIndex="-1" role="dialog" aria-labelledby="voiceModal" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered modal" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -70,12 +70,12 @@ function VoiceUpload({ conversationMessages, setLastMessage, setLastMessageType,
 
                     </div>
                     <div className="modal-body">
-                        <form>
+                        <div>
                             <button onClick={onRecord} className="btn btn-danger offset-2 fs-4 mb-3"><i className="bi bi-record-circle"> Start Record</i></button>
                             <div>
-                                <button onClick={handleSendVoice} type="submit" className="btn btn-md btn-primary offset-2  mb-3" data-dismiss="modal"><i class="bi bi-stop-circle-fill"></i> Stop record</button>
+                                <button onClick={handleSendVoice} type="submit" className="btn btn-md btn-primary offset-2  mb-3" data-dismiss="modal"><i className="bi bi-stop-circle-fill"></i> Stop record</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

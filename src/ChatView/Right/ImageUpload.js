@@ -52,7 +52,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType,c
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form className="mb-3">
+                        <div className="mb-3">
                             <label htmlFor="formFile" className="form-label">select image here</label>
                             <input
                                 accept="image/*"
@@ -64,7 +64,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType,c
                             <div className="modal-footer">
                                 <button onClick={handleSendImage} type="submit" className="btn btn-primary" data-dismiss="modal">Send</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
