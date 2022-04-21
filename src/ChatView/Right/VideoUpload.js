@@ -45,14 +45,14 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType,c
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">Please Upload video</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Please Upload Video file</h5>
+                        <button type="button" className="close closeModal" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <form className="mb-3">
-                            <label htmlFor="formVideoFile" className="form-label">select video here</label>
+                            <label htmlFor="formVideoFile" className="form-label"><strong>Select Video here:</strong></label>
                             <input
                                 accept="video/*"
                                 className="form-control"

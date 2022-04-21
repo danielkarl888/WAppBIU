@@ -6,7 +6,7 @@ import OutComeMessage from './OutComeMess';
 import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
 function RightChat({ conversationsActiveUser, contact, conversationNumber, conversationMessages,
-    setConversationsActiveUser, setConversationNumber, setLastMessage }) {
+    setConversationsActiveUser, setConversationNumber, setLastMessage,setConversationMessages }) {
     const messagesRender = conversationMessages.map((message, key) => {
         if(message.context!="")
         if (message.type == "text") {
@@ -51,6 +51,7 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
                 setConversationNumber={setConversationNumber}
                 setLastMessage={setLastMessage}
                 contact={contact}
+                setConversationMessages={setConversationMessages}
             />
 
         </span>

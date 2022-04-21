@@ -12,6 +12,10 @@
 .btn:hover{
     background-color: blue;
 }
+.closeModal{
+    background-color: transparent;
+    border-color: transparent;
+}
 
 .mt-2 {
     margin-top: 3.3rem!important;
