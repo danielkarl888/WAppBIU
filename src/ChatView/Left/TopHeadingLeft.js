@@ -1,10 +1,22 @@
 import activeUser from "../../ManagingUsersList/activeUser";
 function TopHeadingLeft({conversationsActiveUser, setConversationsActiveUser}) {
+    const newARR={
+        username: "razzzzzzz",
+        messages: [{ src: "send", type: "text", context: "hi", time: "10:55" }, { src: "recv", type: "text", context: "bii", time: "10:58" }]
+    }
+
+    const test = (e)=>{
+        e.preventDefault();
+        const updatedArray = [...conversationsActiveUser, newARR];
+        setConversationsActiveUser(updatedArray);
+    }
+
     return (
 
         <div className="container-fluid row heading">
             <div className="col-sm-2 col-xs-2 heading-avatar">
                 <div className="heading-avatar-icon">
+                <button onClick={test}>Click</button>
                     <img src="bg-1.jpg" alt="Avatar" className="avatar"></img>
                 </div>
             </div>
