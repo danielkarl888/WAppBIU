@@ -15,9 +15,9 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
     
     const handleAdd = (event) => {
         event.preventDefault();
-        conversationsActiveUser.push(newConversation);
+        const update = [...conversationsActiveUser,newConversation ];
+        setConversationsActiveUser(update);
         console.log(conversationsActiveUser);
-
 
     }
 
@@ -33,7 +33,10 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
         messages: [{ src: "", type: "", context: "", time: "" }]
     });
 
-
+    const userNamesConver = [];
+    for (let index = 0; index < conversationsActiveUser.length; index++) {
+        userNamesConver.push(conversationsActiveUser[index].username);        
+    }
 
 
 
@@ -51,7 +54,7 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
                             class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>select new contact</option>
                             {userList.map((value, index) => {
-                                if (activeUser.userName != value.userName && !(conversationsActiveUser.includes(value))) {
+                                if (activeUser.userName != value.userName && !(userNamesConver.includes(value.userName))) {
                                     return <option>
                                      <li key={index}>{value.userName}</li></option>
                                 }

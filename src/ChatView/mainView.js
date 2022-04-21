@@ -28,6 +28,7 @@ function MainView() {
                            setLastMessage={setLastMessage}
                            lastMessageType={lastMessageType}
                            setLastMessageType={setLastMessageType}
+                           setConversationsActiveUser={setConversationsActiveUser}
                             />
                  </span>
                 <span className="col rightside"> 
