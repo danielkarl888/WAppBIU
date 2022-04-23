@@ -96,6 +96,21 @@
         color: #93918f;
         cursor: pointer;
       }
+      .hiddenbtn{
+        border: none;
+        background: none;
+         align-content: center;
+         width: 100%;
+         position: relative;
+        }
+        .hiddenbtn:hover{
+          background-color: rgb(201, 195, 195);
+          vertical-align: middle;
+          border-radius: 50%;
+          height: 100%;
+          
+        }
+    
       
       .textarea {
         position: relative;
@@ -107,21 +122,23 @@
         font-size: 16px;
       }
       
+        
+      
       .dropdown-menu{
-        padding: 0%;
-        padding-bottom: 50%;
-        padding-right: 80%;
+        position: relative;
+       padding-bottom: 40%;
         background-color: rgba(0, 255, 255, 0);
       border: none;
       }
       
       .btnS{
+        position: relative;
         padding: 14px;
         margin-top: 2%;
         margin-bottom: 2%;
         border-radius: 30%;
         border: none;
-        background-color: #8a86827c;
+        background-color: #8a8682c4;
       }
       .btnS:hover{
         background-color: rgb(201, 195, 195);
@@ -131,6 +148,15 @@
         background: none;
         border: none;
       }
+      .messagesArea{
+        overflow-y: auto;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      
+      margin-bottom: 100%;
+      }
+
        .message {
          margin: 0 !important;
          width: auto;
@@ -155,11 +181,12 @@
        .Outmessage{
          margin: 0 !important;
          padding-top: 8%;
-         padding-right: 1%;
+         padding-right: 10%;
          
        }
        .Outmes-content{
          width: 30%;
          background-color: #ebeae4d7;
          border-radius: 20px 20px 0px 25px  ;
+         
        }

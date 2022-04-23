@@ -5,8 +5,23 @@ import Message from './Messages';
 import OutComeMessage from './OutComeMess';
 import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
+import { useEffect, useRef } from 'react'
 function RightChat({ conversationsActiveUser, contact, conversationNumber, conversationMessages,
     setConversationsActiveUser, setConversationNumber, setLastMessage,setConversationMessages }) {
+
+        const messageRef = useRef();
+
+        useEffect(() => {
+            if (messageRef.current) {
+              messageRef.current.scrollIntoView(
+                {
+                  behavior: 'smooth',
+                  block: 'end',
+                  inline: 'nearest'
+                })
+            }
+          })
+
     const messagesRender = conversationMessages.map((message, key) => {
         if(message.context!="")
         if (message.type == "text") {
@@ -40,8 +55,10 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
         <span>
             <TopheadingRight contact={contact} />
             <div className="card mesCon" style={{ height: "70.5%" }}>
-                <div className="contacts">
+                <div className="messagesArea">
+                <div ref={messageRef}> 
                     {messagesRender}
+                    </div>
                 </div>
             </div>
 
