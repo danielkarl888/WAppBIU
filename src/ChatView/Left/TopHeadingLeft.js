@@ -2,7 +2,7 @@ import activeUser from "../../ManagingUsersList/activeUser";
 import { useState } from "react";
 import AddNewContact from "./AddNewContact";
 function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser }) {
-    
+
 
     return (
         <>
@@ -18,6 +18,7 @@ function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser })
             </div>
             <div className="col-sm-2 col-xs-2 heading-compose">
                 <button type="button" className="btn btn-outline-secondary hiddenbtnAdd" data-toggle="modal" data-target="#addModal"> <i className="bi bi-person-plus-fill" aria-hidden="true" style={{ marginLeft: "40%" }}></i> </button>
+
 
             </div>
         </div>

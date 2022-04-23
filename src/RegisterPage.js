@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import userList from './ManagingUsersList/userList';
+import activeUser from "./ManagingUsersList/activeUser";
 function RegisterPage() {
 
     const [newUser, setNewUser] = useState({
         userName: "",
         display: "",
         password: "",
-        img: ""
+        conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]
     });
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
@@ -30,7 +31,7 @@ function RegisterPage() {
         setNewUser({userName: "",
         display: "",
         password: "",
-        img: ""});
+        conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]});
         console.log(bool);
         if(bool){
             console.log("succedd!!");
@@ -48,7 +49,7 @@ function RegisterPage() {
     }
     const validUsername = (uname)=>{
         for(var i=0; i<userList.length; i++) {
-            if (uname==userList[i].userName){
+            if (uname===userList[i].userName){
                 return false;
             }
         }
@@ -58,6 +59,10 @@ function RegisterPage() {
         if (validPassword(newUser.password) && validUsername(newUser.userName)){
             userList.push(newUser);
             setSuccessMessage(true);
+            activeUser.conversations=newUser.conversations;
+            activeUser.userName=newUser.userName;
+            activeUser.display=newUser.display;
+            console.log(activeUser);
             console.log(userList[userList.length - 2])
             console.log(userList[userList.length - 1])
             return true;
@@ -66,7 +71,7 @@ function RegisterPage() {
     }
    
     return (
-        
+        <>
         <form
         autoComplete="off"
         onSubmit={e => handleSubmit(e, newUser)}
@@ -77,7 +82,6 @@ function RegisterPage() {
          </div>
 
 
-        {(successMessage) ? <div className="alert alert-success alert-dismissible" role="alert"><strong>Registerion has been completed!</strong> Please go back to <Link to="/">Login screen</Link></div> : null}
             <div className="form-floating mb-3 input-padding-5">
                 <input
                     onChange={handleUserNameChange}
@@ -102,7 +106,7 @@ function RegisterPage() {
                         name="Password"
                         value={newUser.password}>
                     </input>
-                    {(!validPassword(newUser.password)  && !submitted && newUser.userName != "") ? <div className="m-1 badge rounded-pill bg-danger">please select at least 1 letter and 1 char!</div> : null}
+                    {(!validPassword(newUser.password)  && !submitted && newUser.userName != "") ? <div className="m-1 badge rounded-pill bg-danger">please select at least 1 letter and 1 number!</div> : null}
                     <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>
@@ -122,17 +126,18 @@ function RegisterPage() {
                     <button  type="submit" className="btn btn-primary btn-karl offset-6 fs-4 mb-3" id="register-btn">
                         <i className="bi bi bi-pen-fill"></i> Register</button>
                 </div>
+                <div className="col-7" id="submit">
+                {(successMessage) ? <Link to='/chat'><button  className="btn btn-success btn-karl offset-6 fs-4 mb-3" id="register-btn"><i className="bi bi-whatsapp"></i> Start Chatting!</button></Link> : null}
+                </div>
                 <div className="row">
                 <div className='col-4'></div>
                 <div className="col fs-5" id="submit" >Already Registered? <Link to='/' className="link" id="changeToLogin">Click here</Link> to Login</div>
                 <div className='col-2'></div>
                 </div>
             </div>
-
-
-
-
         </form>
+
+        </>
     );
 }
 export default RegisterPage;

@@ -1,10 +1,12 @@
 import { useState } from "react";
-import activeUser from "../../ManagingUsersList/activeUser";
 import ImageUpload from "./ImageUpload";
 import VideoUpload from "./VideoUpload";
-function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType }) {
+import VoiceUpload from "./VoiceUpload";
+
+function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType,contact,setConversationMessages }) {
     const handleSendText = (event) => {
         event.preventDefault();
+        if(messageText.context!="" && contact!="")
         conversationMessages.push(messageText);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         console.log(conversationMessages);
@@ -16,10 +18,17 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
         });
         setLastMessageType("text");
     }
-
+    function addZero(i) {
+        if (i < 10) {i = "0" + i}
+        return i;
+      }
+      
+          
     const handleMessageChange = (event) => {
-        var today = new Date();
-        var date = today.getHours() + ":" + today.getMinutes();
+        const today = new Date();
+        let h = addZero(today.getHours());
+        let m = addZero(today.getMinutes());
+        var date = h + ":" + m;
         setMessageText({ ...messageText, context: event.target.value, time: date })
         console.log(messageText);
     }
@@ -36,7 +45,7 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
 
     return (
         <>
-            <form className="row d-flex align-items-center reply">
+            <div className="row d-flex align-items-center reply">
                 <div className="col-sm-1 col-xs-1 reply-paperclip">
                     <div className="btn-group dropup">
                         <button type="button" className="btn btn dropdown hiddenbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,10 +55,7 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                             <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div className="btn-group-vertical mr-2" role="group" aria-label="First group">
                                     <button type="button" className="btnS " data-toggle="modal" data-target="#videoModal"><i className="bi bi-camera-video-fill" style={{ color: "black" }}></i></button>
-                                    <button type="button" className="btnS"><i className="bi bi-mic-fill" style={{ color: "black" }}></i></button>
-
-
-
+                                    <button type="button" className="btnS" data-toggle="modal" data-target="#voiceModal"><i className="bi bi-mic-fill" style={{ color: "black" }}></i></button>
                                     <button type="button" className="btnS" data-toggle="modal" data-target="#imageModal"><i className="bi bi-image" style={{ color: "black" }}></i></button>
 
                                 </div>
@@ -69,15 +75,26 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                     <button type="submit" onClick={handleSendText} className="btn-bg-transparent hiddenbtn">  <i className="bi bi-send-fill" aria-hidden="true"></i> </button>
 
                 </div>
-            </form>
+            </div>
             <ImageUpload conversationMessages={conversationMessages}
                 setLastMessage={setLastMessage}
                 setLastMessageType={setLastMessageType}
+                contact={contact}
             />
             <VideoUpload
                 conversationMessages={conversationMessages}
                 setLastMessage={setLastMessage}
                 setLastMessageType={setLastMessageType}
+                contact={contact}
+                setConversationMessages={setConversationMessages}
+
+            />
+            <VoiceUpload
+                conversationMessages={conversationMessages}
+                setLastMessage={setLastMessage}
+                setLastMessageType={setLastMessageType}
+                contact={contact}
+                setConversationMessages={setConversationMessages}
             />
 
         </>

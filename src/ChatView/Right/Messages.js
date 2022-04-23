@@ -1,5 +1,5 @@
 
-function Message({context}) {
+function Message({context, time}) {
     
     return(
         <div className="message">
@@ -7,6 +7,9 @@ function Message({context}) {
         <div className="mes-text">
             {context}
         </div>
+        <div className="mes-text-time">{time}</div>
+
+
     </div>
 </div>  
     );

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import userList from './ManagingUsersList/userList';
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
- 
 function LoginPage(){
     
     const [newUser, setNewUser] = useState({
@@ -57,6 +56,8 @@ function LoginPage(){
 
    
     return (
+        <>
+        <div className="col-2"></div>
         <form
         autoComplete="off"
         onSubmit={e => handleSubmit(e, newUser)}
@@ -106,6 +107,9 @@ function LoginPage(){
                 
             </div>
         </form>
+        <div className="col-2"></div>
+
+        </>
     );
 }
 export default LoginPage;

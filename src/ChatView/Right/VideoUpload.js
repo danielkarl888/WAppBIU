@@ -1,5 +1,5 @@
 import { useState } from "react";
-function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
+function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType,contact }) {
     const [messageVideo, setMessageVideo] = useState(
         {
             src: "send",
@@ -9,6 +9,7 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
     const handleSendImage = (event) => {
         event.preventDefault();
+        if(messageVideo.context!="" && contact!="")
         conversationMessages.push(messageVideo);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setLastMessageType("video");
@@ -20,13 +21,19 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
         console.log(conversationMessages);
     }
+    function addZero(i) {
+        if (i < 10) {i = "0" + i}
+        return i;
+      }
     function handleChange(e) {
         var reader = new FileReader();
         reader.onloadend = function () {
             var base64data = reader.result; 
             console.log(base64data);      
             var today = new Date();
-            var date = today.getHours() + ":" + today.getMinutes();    
+            let h = addZero(today.getHours());
+            let m = addZero(today.getMinutes());
+            var date = h + ":" + m;
             setMessageVideo({ ...messageVideo, context: base64data, time: date })
         }
         reader.readAsDataURL(e.target.files[0]);
@@ -38,14 +45,14 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">Please Upload video</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Please Upload Video file</h5>
+                        <button type="button" className="close closeModal" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form className="mb-3">
-                            <label htmlFor="formVideoFile" className="form-label">select video here</label>
+                        <div className="mb-3">
+                            <label htmlFor="formVideoFile" className="form-label"><strong>Select Video here:</strong></label>
                             <input
                                 accept="video/*"
                                 className="form-control"
@@ -56,7 +63,7 @@ function VideoUpload({ conversationMessages, setLastMessage,setLastMessageType }
                             <div className="modal-footer">
                                 <button onClick={handleSendImage} type="submit" className="btn btn-primary" data-dismiss="modal">Send</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

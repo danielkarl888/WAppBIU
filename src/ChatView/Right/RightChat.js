@@ -7,7 +7,7 @@ import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
 import { useEffect, useRef } from 'react'
 function RightChat({ conversationsActiveUser, contact, conversationNumber, conversationMessages,
-    setConversationsActiveUser, setConversationNumber, setLastMessage }) {
+    setConversationsActiveUser, setConversationNumber, setLastMessage,setConversationMessages }) {
 
         const messageRef = useRef();
 
@@ -23,22 +23,32 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
           })
 
     const messagesRender = conversationMessages.map((message, key) => {
+        if(message.context!="")
         if (message.type == "text") {
             if (message.src === "send")
-                return <Message key={key} context={message.context} />;
+                return <Message key={key} context={message.context} time={message.time} />;
             else
-                return <OutComeMessage key={key} context={message.context} />;
+                return <OutComeMessage key={key} context={message.context} time={message.time} />;
         } else if (message.type == "image") {
             if (message.src === "send")
-                return <Message key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} />;
+                return <Message key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} time={message.time} />;
             else
-                return <OutComeMessage key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} />;
+                return <OutComeMessage key={key} context={<img style={{ width: "100%" }} src={message.context}></img>} time={message.time} />;
         }
         else if (message.type == "video") {
             if (message.src === "send")
-                return <Message key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} />;
+                return <Message key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} time={message.time} />;
             else
-            return <OutComeMessage key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} />;
+            return <OutComeMessage key={key} context={<video controls style={{ width: "100%" }} src={message.context}></video>} time={message.time} />;
+        } else {
+            if (message.src === "send")
+                return <Message key={key} context={
+                <audio controls="controls" style={{ width: "100%" }}  >
+                <source src={message.context} type="video/webm"></source></audio>} time={message.time} />;
+            else
+            return <OutComeMessage key={key} context={
+                <audio controls="controls" style={{ width: "100%" }}  >
+                <source src={message.context} type="video/webm"></source></audio>} time={message.time} />;
         }
     })
     return (
@@ -57,6 +67,8 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
                 setConversationsActiveUser={setConversationsActiveUser}
                 setConversationNumber={setConversationNumber}
                 setLastMessage={setLastMessage}
+                contact={contact}
+                setConversationMessages={setConversationMessages}
             />
 
         </span>

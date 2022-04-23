@@ -1,5 +1,5 @@
 import { useState } from "react";
-function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }) {
+function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType,contact }) {
     const [file, setFile] = useState();
     const [messageImage, setMessageImage] = useState(
         {
@@ -10,6 +10,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
         });
     const handleSendImage = (event) => {
         event.preventDefault();
+        if(messageImage.context!="" && contact!="")
         conversationMessages.push(messageImage);
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         setLastMessageType("image")
@@ -21,13 +22,19 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
             time: ""
         });
     }
+    function addZero(i) {
+        if (i < 10) {i = "0" + i}
+        return i;
+      }
     function handleChange(e) {
         var reader = new FileReader();
         reader.onloadend = function () {
             var base64data = reader.result; 
             console.log(base64data);      
             var today = new Date();
-            var date = today.getHours() + ":" + today.getMinutes();    
+            let h = addZero(today.getHours());
+            let m = addZero(today.getMinutes());
+            var date = h + ":" + m;
             setMessageImage({ ...messageImage, context: base64data, time: date })
         }
         reader.readAsDataURL(e.target.files[0]);
@@ -40,12 +47,12 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLongTitle">Please Upload image</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close closeModal" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form className="mb-3">
+                        <div className="mb-3">
                             <label htmlFor="formFile" className="form-label">select image here</label>
                             <input
                                 accept="image/*"
@@ -57,7 +64,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType }
                             <div className="modal-footer">
                                 <button onClick={handleSendImage} type="submit" className="btn btn-primary" data-dismiss="modal">Send</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
