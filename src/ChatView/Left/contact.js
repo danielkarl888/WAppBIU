@@ -9,6 +9,7 @@ function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLast
         setLastMessage(conversationsActiveUser[index].messages[conversationsActiveUser[index].messages.length-1])
         }
         var messagePreview;
+        if(!lastMessageContent=="")
         if(lastMessageType == "text") {
             messagePreview= lastMessageContent;
         } else if (lastMessageType == "image"){
