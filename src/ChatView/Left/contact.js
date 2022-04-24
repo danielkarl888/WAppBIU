@@ -24,7 +24,7 @@ function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLast
             <div  className="row sideBar-body">
                 <div className="col-sm-3 col-xs-3 sideBar-avatar">
                     <div className="heading-avatar-icon">
-                        <img src="bg-1.jpg" alt="Avatar" className="avatar"></img>
+                        <img src="profileimage.jpg" alt="Avatar" className="avatar"></img>
                     </div>
                 </div>
                 <div className="col-sm-6 col-xs-9 sideBar-main">

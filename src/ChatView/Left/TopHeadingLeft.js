@@ -9,7 +9,7 @@ function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser })
         <div className="container-fluid row heading">
             <div className="col-sm-2 col-xs-2 heading-avatar">
                 <div className="heading-avatar-icon">
-                    <img src="bg-1.jpg" alt="Avatar" className="avatar"></img>
+                    <img src="profileimage.jpg" alt="Avatar" className="avatar"></img>
                 </div>
             </div>
             <div className="col-sm-8 headingUsername">
