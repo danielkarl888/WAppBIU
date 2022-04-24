@@ -1,5 +1,10 @@
+# added packages 
+
 We used react-bootstrap, react-router-dom for this part of the project.
 please use the 'npm start' command.
+
+# details of the users 
+
 our hard-coded usernames are : daniel, dvir, david, oz, yosi, noam.
 the passwords for them are the same as their username plus the number 1 (for exapmle, the user "daniel" has the password "daniel1")
 the user daniel has all sorts of messages in his first conversation.
