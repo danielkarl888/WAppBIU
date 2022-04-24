@@ -74,7 +74,7 @@ function VoiceUpload({ conversationMessages, setLastMessage, setLastMessageType,
                             <button type="button" onClick={onRecord} className="btn btn-danger offset-4 fs-4 mb-3 " style={{width:"30%"}}> <i className="bi bi-record-circle"></i> Start</button>
                             </div>
                             <div>
-                                <button onClick={handleSendVoice} type="submit" className="btn btn-md btn-primary offset-4 mb-3 stopBut " data-dismiss="modal" style={{width:"20%"}}><i className="bi bi-stop-circle-fill"> Stop</i></button>
+                                <button onClick={handleSendVoice} type="submit" className="btn btn-md btn-primary offset-4 fs-4 mb-3 stopBut " data-dismiss="modal" style={{width:"30%"}}><i className="bi bi-stop-circle-fill"> Stop</i></button>
                             </div>
                         </div>
                     </div>
