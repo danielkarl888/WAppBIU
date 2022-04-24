@@ -27,6 +27,13 @@
      .hiddenbtnAdd:hover{
        background-color: rgb(138, 143, 148);
      }
+
+     .addBut{
+
+     }
+     .addBut:hover{
+       background-color: rgb(96, 173, 96) !important;
+    }
     .heading {
       padding: 3%;
       margin: 0;

@@ -47,9 +47,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType,c
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLongTitle">Please Upload image</h5>
-                        <button type="button" className="close closeModal" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" className="btn-close" data-dismiss="modal"></button>
                     </div>
                     <div className="modal-body">
                         <div className="mb-3">
@@ -62,7 +60,7 @@ function ImageUpload({ conversationMessages, setLastMessage,setLastMessageType,c
                                 onChange={handleChange}
                             ></input>
                             <div className="modal-footer">
-                                <button onClick={handleSendImage} type="submit" className="btn btn-primary" data-dismiss="modal">Send</button>
+                                <button onClick={handleSendImage} type="submit" className="btn btn-primary" data-dismiss="modal" style={{width:"20%"}}>Send</button>
                             </div>
                         </div>
                     </div>

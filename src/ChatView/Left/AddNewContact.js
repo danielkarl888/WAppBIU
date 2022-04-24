@@ -65,7 +65,7 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
        
             </div>
             <div class="modal-footer">
-            <button type="button" onClick={handleAdd} className="btn btn-success btn-sm" data-dismiss="modal" style={{ width: "20%" }}>Add</button>
+            <button type="button" onClick={handleAdd} className="btn btn-success btn-sm addBut" data-dismiss="modal" style={{ width: "20%" }}>Add</button>
               </div>
           </div>
         </div>

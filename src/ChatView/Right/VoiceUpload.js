@@ -64,9 +64,8 @@ function VoiceUpload({ conversationMessages, setLastMessage, setLastMessageType,
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLongTitle"><strong>Upload Voice</strong></h5>
-                        <button type="button" className="close closeModal" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" className="btn-close" data-dismiss="modal"></button>
+
 
                     </div>
                     <div className="modal-body">
