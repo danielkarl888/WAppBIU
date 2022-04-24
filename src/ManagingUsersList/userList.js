@@ -10,19 +10,19 @@ const userList = [{
     },
     {
         username: "tzvi",
-        messages: [{ src: "send", type: "text", context: "barrr", time: "23:25" }, { src: "recv", type: "text", context: "fooo", time: "04:58" }]
+        messages: [{ src: "send", type: "text", context: "hii tzvi!", time: "23:25" }, { src: "recv", type: "text", context: "ma kore?", time: "08:21" },{ src: "send", type: "image", context: "img1.jpg", time: "04:11" },{ src: "send", type: "text", context: "great!!!", time: "00:43" }]
     },
     {
         username: "david",
-        messages: [{ src: "send", type: "text", context: "barrr", time: "11:55" }, { src: "recv", type: "text", context: "fooo", time: "04:58" }]
+        messages: [{ src: "send", type: "text", context: "hii david", time: "11:55" }, { src: "recv", type: "text", context: "gracias!", time: "06:53" }]
     },
     {
         username: "yosi",
-        messages: [{ src: "send", type: "text", context: "barrr", time: "10:22" }, { src: "recv", type: "text", context: "fooo", time: "04:58" }]
+        messages: [{ src: "send", type: "text", context: "hii yosi", time: "10:22" }, { src: "recv", type: "text", context: "alohha!", time: "07:00" }]
     },
     {
         username: "noam",
-        messages: [{ src: "send", type: "text", context: "barrr", time: "10:22" }, { src: "recv", type: "text", context: "fooo", time: "04:58" }]
+        messages: [{ src: "send", type: "text", context: "hii noam :)", time: "10:22" }, { src: "recv", type: "text", context: "shalom", time: "06:25" }]
     }]
 },
 {
