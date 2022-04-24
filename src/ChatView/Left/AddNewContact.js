@@ -7,22 +7,15 @@ import userList from "../../ManagingUsersList/userList";
 function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) {
     
     const handleAdd = (event) => {
-        if(newConversation.username!="" && userNamesConver[userNamesConver.length-1]!=newConversation.username){
+        if(newConversation.username!="select new contact" && userNamesConver[userNamesConver.length-1]!=newConversation.username){
         event.preventDefault();
         const update = [...conversationsActiveUser, newConversation];
         setConversationsActiveUser(update);
-        console.log(conversationsActiveUser);}
+       }
     }
 
     const handleAddChange = (event) => {
-        if(event.target.value!=""){
-        console.log(event.target.value);
-        
-
         setNewConversation({ username: event.target.value, messages: [{ src: "", type: "", context: "", time: "" }] })
-        console.log(userNamesConver);
-        }
-
     }
 
     const [newConversation, setNewConversation] = useState({
@@ -50,7 +43,7 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
             <select
             onChange={handleAddChange}
                 class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option value="" selected >select new contact</option>
+                <option value="select new contact" selected >select new contact</option>
                 
                 {userList.map((value, index) => {
                    
