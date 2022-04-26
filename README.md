@@ -1,5 +1,5 @@
-# WApp Biu
-welcome to the Wapp Biu website! 
+# WApp BIU
+welcome to the Wapp BIU website! 
 Created and Desgined by Dvir Landau and Daniel Meir Karl!
 
 # Added Packages 
