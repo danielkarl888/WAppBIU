@@ -1,4 +1,8 @@
-# added packages 
+# WApp Biu
+welcome to the Wapp Biu website! 
+Created and Desgined by Dvir Landau and Daniel Meir Karl!
+
+# Added Packages 
 
 We used react-bootstrap, react-router-dom for this part of the project.
 please use the 'npm start' command.
