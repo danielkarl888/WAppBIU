@@ -4,7 +4,8 @@ import userList from './ManagingUsersList/userList';
 import activeUser from "./ManagingUsersList/activeUser";
 function RegisterPage() {
     const [register, setRegister] = useState(false);
-
+    var arr  =[]
+    var arr2  =[]
     const [newUser, setNewUser] = useState({
         userName: "",
         display: "",
@@ -34,15 +35,36 @@ function RegisterPage() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({  "userName": newUser.userName,
-                                    "displayName": newUser.userName,
+                                    "displayName": newUser.display,
                                     "password": newUser.password
           }) 
         }).then(res=>{
             if(res.ok){
+                LoginFetch();
                 setSuccessMessage(true);  
                 console.log(successMessage);
             }
         })
+        const LoginFetch = ()=>{
+            fetch('http://localhost:5030/api/Users/Login', {
+                method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json   '
+                },
+                body: JSON.stringify({  "userName": newUser.userName,
+                                        "password": newUser.password
+              }) 
+            }).then(res=>{
+                if(res.ok){
+                    activeUser.userName = newUser.userName;
+                    activeUser.display = newUser.display;
+                    activeUser.conversations=[{ username: "", name:"", server:"",last:"", lastDate:"" ,
+                     messages : [{ src: "send", type: "text", context: "", time: "", id:"" }]}]
+                    console.log(activeUser);
+                }
+            })
+        }
+
         setNewUser({userName: "",
         display: "",
         password: "",
