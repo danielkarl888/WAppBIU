@@ -46,6 +46,18 @@ function LoginPage(){
 
 
     
+    const [allContact, setContact] = useState([]);
+    
+    const getContact = async function(){
+      await  fetch(`http://localhost:5030/api/Contacts`) 
+         .then(res=>res.json()).then(data =>{setContact(data); })
+    }
+
+    useEffect(getContact,[1]);
+    
+
+
+
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
     }
@@ -68,19 +80,15 @@ function LoginPage(){
             if(res.ok){
                 setYes(true);
                 activeUser.userName = newUser.userName;
+                activeUser.conversations = allContact;
                 console.log(activeUser);
             }
         })
     }
-    /*
-    const displayFetch = ()=>{
-        fetch(`http://localhost:5030/api/Users/${newUser.userName}`,  {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then(res=>res.json()).then((data)=>{console.log(data); })
-    }*/
+   
+
+
+
     const isValidUser = (newUser)=>{
         /*
         if(!isExistUsername(newUser.userName)){
