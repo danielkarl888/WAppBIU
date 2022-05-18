@@ -19,7 +19,7 @@ function LoginPage(){
         fetch(`http://localhost:5030/api/Users/UserExistCheck/${newUser.userName}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'text/plain'
             }, 
         }).then(res=>{
             if(res.ok){
@@ -29,6 +29,23 @@ function LoginPage(){
             }
         })
     },[newUser.userName])
+    
+    useEffect(()=>{
+        fetch(`http://localhost:5030/api/Contacts`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }, 
+        }).then(res=>{
+            if(res.ok){
+                res.json();  
+            } 
+        }).then(data=>console.log())
+    },[yes])
+
+
+    
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
     }
@@ -40,8 +57,8 @@ function LoginPage(){
         event.preventDefault();
         fetch('http://localhost:5030/api/Users/Login', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+                headers: {
+                'Content-Type': 'application/json   '
 
             },
             body: JSON.stringify({  "userName": newUser.userName,
@@ -49,10 +66,21 @@ function LoginPage(){
           }) 
         }).then(res=>{
             if(res.ok){
-                setYes(true);  
+                setYes(true);
+                activeUser.userName = newUser.userName;
+                console.log(activeUser);
             }
         })
     }
+    /*
+    const displayFetch = ()=>{
+        fetch(`http://localhost:5030/api/Users/${newUser.userName}`,  {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(res=>res.json()).then((data)=>{console.log(data); })
+    }*/
     const isValidUser = (newUser)=>{
         /*
         if(!isExistUsername(newUser.userName)){

@@ -3,6 +3,7 @@ import contacts from "./contacts";
  
 function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLastMessageType,time,setContact,setConversationMessages,conversationsActiveUser,index}) {
     const changeConversation = ()=>{
+        console.log(name);
         setContact(name);
         console.log(index);
         setConversationMessages(conversationsActiveUser[index].messages);

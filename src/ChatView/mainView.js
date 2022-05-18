@@ -1,11 +1,28 @@
 import './mainView.css';
 import LeftChat from './Left/LeftChat';
 import RightChat from './Right/RightChat';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import activeUser from '../ManagingUsersList/activeUser';
 function MainView() {
     const [conversationsActiveUser, setConversationsActiveUser] = useState(activeUser.conversations);
-    const [contact, setContact] = useState(conversationsActiveUser[0].username);
+/*
+    useEffect(()=>{
+        fetch(`http://localhost:5030/api/Contacts`, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }, 
+      }).then(res=>{
+          if(res.ok){
+            return res.json();
+          } 
+      }).then(data =>{
+        setConversationsActiveUser(data)
+        console.log(conversationsActiveUser);
+      })
+      },[]) */
+    //const [conversationsActiveUser, setConversationsActiveUser] = useState(activeUser.conversations);
+    const [contact, setContact] = useState(conversationsActiveUser[0].name);
     const [conversationNumber, setConversationNumber] = useState(0);
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
