@@ -20,10 +20,10 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
             }).then(res=>{
                 if(res.ok){
                     //console.log(1111);
-                    conversationMessages.push(messageText);
+                    //conversationMessages.push(messageText);
                 }
             })
-            //conversationMessages.push(messageText);
+            conversationMessages.push(messageText);
         }
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         console.log(conversationMessages);
