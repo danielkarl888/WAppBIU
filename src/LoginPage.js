@@ -5,7 +5,9 @@ import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
 import axios from "axios";
 function LoginPage(){
-    
+    var arr  =[]
+    var arr2  =[]
+
     const [yes, setYes] = useState(false);
     const [nameExist, setNameExist] = useState(true);
 
@@ -29,22 +31,17 @@ function LoginPage(){
             }
         })
     },[newUser.userName])
-    
+    /*
     useEffect(()=>{
-        fetch(`http://localhost:5030/api/Contacts`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }, 
-        }).then(res=>{
+        fetch(`http://localhost:5030/api/Contacts`)
+        .then(res=>{
             if(res.ok){
-                res.json();  
+                return res.json();  
             } 
-        }).then(data=>console.log())
+        }).then(data=>console.log(data));
     },[yes])
 
-
+*/
     
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
@@ -68,37 +65,68 @@ function LoginPage(){
             if(res.ok){
                 setYes(true);
                 activeUser.userName = newUser.userName;
+                displayFetch(activeUser);
+                conatctsFetch(activeUser);
                 console.log(activeUser);
             }
         })
     }
-    /*
-    const displayFetch = ()=>{
+    
+    const displayFetch = (activeUser)=>{
         fetch(`http://localhost:5030/api/Users/${newUser.userName}`,  {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-        }).then(res=>res.json()).then((data)=>{console.log(data); })
-    }*/
-    const isValidUser = (newUser)=>{
-        /*
-        if(!isExistUsername(newUser.userName)){
-            return false;
-        }
-        */
-        for(var j =0; j<userList.length;j++){
-            if(newUser.password == userList[j].password && newUser.userName == userList[j].userName){
-                activeUser.userName = userList[j].userName;
-                activeUser.display = userList[j].display;
-                activeUser.conversations = userList[j].conversations;
-                console.log(activeUser.conversations);
-                return true;
-            }
-        }
-        return false;
+        }).then(res=>res.json()).then((data)=>{activeUser.display=data.displayName; })
     }
+    const conatctsFetch = (activeUser)=>{
+        fetch(`http://localhost:5030/api/Contacts`,  {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(res=>res.json())
+            .then((data)=>{
+                arr =[];
+                data.map((contact, index)=> {
+                   const x = {   username: contact.id,
+                                 name: contact.name,
+                                 server: contact.server,
+                                 last: contact.last,
+                                 lastDate: contact.lastDate,
+                                 messages: []}
+                    messagesFetch(x, contact.id);
+                    arr.push(x);
 
+                })
+                activeUser.conversations = arr;
+                console.log(activeUser);
+         })
+    }
+    const messagesFetch = (x2, user)=>{
+        fetch(`http://localhost:5030/api/Contacts/${user}/messages`,  {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(res=>res.json())
+            .then((data)=>{
+                arr2 =[];
+                data.map((message, index)=> {
+                   const y = {  src: message.sent ? "send" : "recv" ,
+                                type: "text",
+                                context: message.content,
+                                time: message.created,
+                                id:message.id}
+                    arr2.push(y);
+                })
+                //console.log(arr2);
+                x2.messages=arr2;
+                //activeUser.conversations[contactNumber].messages = arr2;
+                console.log(activeUser);
+         })
+    }
    
     return (
         <>

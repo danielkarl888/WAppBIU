@@ -22,14 +22,13 @@ function MainView() {
       })
       },[]) */
     //const [conversationsActiveUser, setConversationsActiveUser] = useState(activeUser.conversations);
-    const [contact, setContact] = useState(conversationsActiveUser[0].name);
+    const [contact, setContact] = useState(conversationsActiveUser[0].username);
     const [conversationNumber, setConversationNumber] = useState(0);
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
     const [lastMessage, setLastMessage] = useState(conversationMessages[conversationMessages.length-1].context);
     const [lastMessageType, setLastMessageType] = useState(conversationMessages[conversationMessages.length-1].type);
-
-
+    
     const contactChange = (newName) => {
         setContact(newName);
     }

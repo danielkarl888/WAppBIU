@@ -6,15 +6,33 @@ import VoiceUpload from "./VoiceUpload";
 function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType,contact,setConversationMessages }) {
     const handleSendText = (event) => {
         event.preventDefault();
+
         if(messageText.context!="" && contact!="")
-        conversationMessages.push(messageText);
+        {
+            fetch(`http://localhost:5030/api/Contacts/${contact}/messages`, {
+                method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json   '
+                },
+                body: JSON.stringify({  
+                                        "content": messageText.context
+              }) 
+            }).then(res=>{
+                if(res.ok){
+                    //console.log(1111);
+                    conversationMessages.push(messageText);
+                }
+            })
+            //conversationMessages.push(messageText);
+        }
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         console.log(conversationMessages);
         setMessageText({
             src: "send",
             type: "text",
             context: "",
-            time: ""
+            time: "",
+            id:""
         });
         setLastMessageType("text");
     }

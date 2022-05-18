@@ -13,7 +13,7 @@ function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser })
                 </div>
             </div>
             <div className="col-sm-8 headingUsername">
-                <span className="name-meta" style={{ marginLeft: "40%" }}>{activeUser.userName}
+                <span className="name-meta" style={{ marginLeft: "40%" }}>{activeUser.display}
                 </span>
             </div>
             <div className="col-sm-2 col-xs-2 heading-compose">
