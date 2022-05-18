@@ -1,16 +1,97 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import userList from './ManagingUsersList/userList';
+
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
+import { useEffect } from "react";
+import axios from "axios";
+
+
 function LoginPage(){
     
+    const [list, setList] = useState([]);
+    const [repo, setRepo] = useState([]);
     const [newUser, setNewUser] = useState({
         userName: "",
-        display: "",
+        password: "",
         password: "",
         conversations: ""
     });
+    const [logUser, setlogUser] = useState({
+        userName: "",
+        display: "",
+        password: "",
+        conversations: "" 
+    });
+
+
+    useEffect(()=>{
+        const func= async()=>{
+            const res = await fetch('http://localhost:5030/api/Users');
+            console.log(res);
+            const data = await res.json();
+            console.log(data);
+            setList(data);
+        }
+        func();
+    },[]);
+
+   
+        const getRepo= ()=>{
+          axios.get('http://localhost:5030/api/Users')
+            .then((response) => {
+            console.log(response);
+            const myRepo = response.data;
+            setRepo(myRepo);
+           });
+        };
+        
+        useEffect(()=> getRepo(),[]);
+        
+        useEffect(()=>{
+            const post= async()=>{
+                const res = await axios.post('http://localhost:5030/Login',{userName: "yossi", password:"Yossi1"});
+                setlogUser(res.data);
+                console.log(res);
+            }
+            post();
+        },[]);   
+   
+
+        // const handleSubmit1 = async (event) => {
+        //     event.preventDefault();
+        //     const user = {userName: "",
+        //             display: "",
+        //             password: "",
+        //             conversations: ""};
+        //         const response1 = await axios.post('http://localhost:5030/api/Users/Login',user);
+        //         setNewUser(response1.data);
+        //         console.log(response1.data);
+            
+        // }
+    
+
+        // Example POST method implementation:
+// async function postData(url = '') {
+//     // Default options are marked with *
+//     const response = await fetch(url, {
+//       method: 'POST', // *GET, POST, PUT, DELETE, etc.
+//       mode: 'cors', // no-cors, *cors, same-origin
+//       headers: {
+//         'Content-Type': 'application/json'
+//         // 'Content-Type': 'application/x-www-form-urlencoded',
+//       },
+//            body: "JSON.stringify({userName: data.userName, password: data.password })" 
+//     });
+//     return response.json(); // parses JSON response into native JavaScript objects
+//   }
+  
+//   postData('https://example.com/answer', { answer: 42 })
+//     .then(data => {
+//       console.log(data); // JSON data parsed by `data.json()` call
+//     });
+  
+
     
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
@@ -30,15 +111,36 @@ function LoginPage(){
             conversations: ""});
         }
     }
-    const isValidUser = (newUser)=>{
+    const isValidUser = (newUser)=>  {
+        // const userData = {
+        //     name: newUser.userName,
+        //     password: newUser.password
+        //   };
+       
+        // axios.post("http://localhost:5030/Login", userData)
+        //   .then((response) => {
+        //     console.log(response.status);
+        //     console.log(response.data.token);
+        //   });
+      
+        // await fetch('http://localhost:5030/Login', {
+        //     method: 'POST', 
+        //     mode: 'cors', 
+        //     headers: {
+        //     'Content-Type': 'application/json'
+        //     // 'Content-Type': 'application/x-www-form-urlencoded',
+        //     },
+        //     body: JSON.stringify(newUser)
+        // }).then(response => response.json())
+        // .then(data => console.log(data))
         if(!isExistUsername(newUser.userName)){
             return false;
         }
-        for(var j =0; j<userList.length;j++){
-            if(newUser.password == userList[j].password && newUser.userName == userList[j].userName){
-                activeUser.userName = userList[j].userName;
-                activeUser.display = userList[j].display;
-                activeUser.conversations = userList[j].conversations;
+        for(var j =0; j<list.length;j++){
+            if(newUser.password == list[j].password && newUser.userName == list[j].userName){
+                activeUser.userName = list[j].userName;
+                activeUser.display = list[j].display;
+                activeUser.conversations = list[j].conversations;
                 console.log(activeUser.conversations);
                 return true;
             }
@@ -46,8 +148,8 @@ function LoginPage(){
         return false;
     }
     const isExistUsername = (uname)=>{
-        for(var i=0; i<userList.length; i++) {
-            if (uname==userList[i].userName){
+        for(var i=0; i<list.length; i++) {
+            if (uname==list[i].userName){
                 return true;
             }
         }
@@ -57,10 +159,21 @@ function LoginPage(){
    
     return (
         <>
+        {list.map((value, index)=>{ 
+            return <div>{value.password}</div>
+            })}
+         
+         {repo.map((value, index)=>{ 
+            return <div>{value.userName}</div>
+            })}
+         
+           
+
         <div className="col-2"></div>
         <form
         autoComplete="off"
         onSubmit={e => handleSubmit(e, newUser)}
+       // onSubmit={e=> handleSubmit1(e)}
         className="col card mt-2"
         id="conncectCard"> 
             <div className="text-center">
