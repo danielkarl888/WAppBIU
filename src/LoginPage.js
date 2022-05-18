@@ -1,53 +1,70 @@
 import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import userList from './ManagingUsersList/userList';
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
+import axios from "axios";
 function LoginPage(){
     
+    const [yes, setYes] = useState(false);
+    const [nameExist, setNameExist] = useState(true);
+
     const [newUser, setNewUser] = useState({
         userName: "",
-        display: "",
         password: "",
-        conversations: ""
     });
-    
+    const [isExist, setIsExist] = useState(true);
+
+    useEffect(()=>{
+        fetch(`http://localhost:5030/api/Users/UserExistCheck/${newUser.userName}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+        }).then(res=>{
+            if(res.ok){
+                setIsExist(false);  
+            } else {
+                setIsExist(true);  
+            }
+        })
+    },[newUser.userName])
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
-        console.log(newUser.userName);
     }
     const handlePasswordChange = (event) => {
         setNewUser({ ...newUser, password: event.target.value })
-        console.log(newUser.password);
     }
+
     const handleSubmit = (event, newUser) => {
         event.preventDefault();
-        var bool = isValidUser(newUser)
-        if(!bool){
-            setNewUser({userName: "",
-            display: "",
-            password: "",
-            conversations: ""});
-        }
+        fetch('http://localhost:5030/api/Users/Login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+
+            },
+            body: JSON.stringify({  "userName": newUser.userName,
+                                    "password": newUser.password
+          }) 
+        }).then(res=>{
+            if(res.ok){
+                setYes(true);  
+            }
+        })
     }
     const isValidUser = (newUser)=>{
+        /*
         if(!isExistUsername(newUser.userName)){
             return false;
         }
+        */
         for(var j =0; j<userList.length;j++){
             if(newUser.password == userList[j].password && newUser.userName == userList[j].userName){
                 activeUser.userName = userList[j].userName;
                 activeUser.display = userList[j].display;
                 activeUser.conversations = userList[j].conversations;
                 console.log(activeUser.conversations);
-                return true;
-            }
-        }
-        return false;
-    }
-    const isExistUsername = (uname)=>{
-        for(var i=0; i<userList.length; i++) {
-            if (uname==userList[i].userName){
                 return true;
             }
         }
@@ -76,7 +93,7 @@ function LoginPage(){
                     name="userName"
                     value={newUser.userName}>
                 </input>
-                {(!isExistUsername(newUser.userName)) && newUser.userName!=='' ? <div className="m-1 badge rounded-pill bg-danger">user name is not registered!</div> : null}
+                {isExist ? <div className="m-1 badge rounded-pill bg-danger">user name is not registered!</div> : null}
                 <label htmlFor="floatingUser" className="fs-4">Username</label>
             </div>
             <>
@@ -90,7 +107,7 @@ function LoginPage(){
                         name="Password"
                         value={newUser.password}>
                     </input>
-                    {(isExistUsername(newUser.userName)) && !isValidUser(newUser) ? <div className="m-1 badge rounded-pill bg-danger">Password is incorrect!</div> : null}
+                    {/*(isExistUsername(newUser.userName)) && !isValidUser(newUser) ? <div className="m-1 badge rounded-pill bg-danger">Password is incorrect!</div> : null*/}
                     <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>
@@ -101,8 +118,9 @@ function LoginPage(){
                         <span>not Registered? <Link to='/regi' className="link" id="changeToRegister">
                             Click here</Link> to Register!</span>
                     </div>
+                <div className="col-3"></div><button type="submit" className="btn btn-primary btn-karl fs-4 m-3">Login</button><div className="col-3"></div>
 
-                {isValidUser(newUser) ? <LinkToChat /> : null}
+                {yes ? <LinkToChat /> : null}
 
                 
             </div>

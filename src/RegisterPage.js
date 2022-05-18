@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import userList from './ManagingUsersList/userList';
 import activeUser from "./ManagingUsersList/activeUser";
 function RegisterPage() {
+    const [register, setRegister] = useState(false);
 
     const [newUser, setNewUser] = useState({
         userName: "",
@@ -10,6 +11,7 @@ function RegisterPage() {
         password: "",
         conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]
     });
+
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })
         console.log(newUser.userName);
@@ -26,19 +28,25 @@ function RegisterPage() {
     const [successMessage, setSuccessMessage] = useState(false);
     const handleSubmit = (event, newUser) => {
         event.preventDefault();
-        validAllandRegister(newUser);
-        var bool = validAllandRegister(newUser);
+        fetch('http://localhost:5030/api/Users/Register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({  "userName": newUser.userName,
+                                    "displayName": newUser.userName,
+                                    "password": newUser.password
+          }) 
+        }).then(res=>{
+            if(res.ok){
+                setSuccessMessage(true);  
+                console.log(successMessage);
+            }
+        })
         setNewUser({userName: "",
         display: "",
         password: "",
         conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]});
-        console.log(bool);
-        if(bool){
-            console.log("succedd!!");
-            setSubmitted(true);
-        } else {
-            setSubmitted(false);
-        }
     }
     const validPassword = (newPassword)=>{
         if (!(/\d/.test(newPassword) && /[a-zA-Z]/.test(newPassword))) {
