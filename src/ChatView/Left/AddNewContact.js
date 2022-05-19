@@ -15,14 +15,15 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
     }
 
     const handleAddChange = (event) => {
-        setNewConversation({ username: event.target.value, messages: [{ src: "", type: "", context: "", time: "" }] })
+        setNewConversation({ username: newConversation.username,name: newConversation.name,
+                              server : newConversation.server, last:"", lastDate:"",
+                              messages: [{ src: "", type: "", context: "", time: "", id :"" }] })
     }
 
     const [newConversation, setNewConversation] = useState({
         username: "",
-        id:"",
+        name:"",
         server:"",
-        messages: [{ src: "", type: "", context: "", time: "" }]
     });
 
     const userNamesConver = [];
