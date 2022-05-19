@@ -20,6 +20,8 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
 
     const [newConversation, setNewConversation] = useState({
         username: "",
+        id:"",
+        server:"",
         messages: [{ src: "", type: "", context: "", time: "" }]
     });
 
@@ -40,22 +42,26 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
 
             </div>
             <div class="modal-body">
-            <select
-            onChange={handleAddChange}
-                class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                <option value="select new contact" selected >select new contact</option>
-                
-                {userList.map((value, index) => {
-                   
-                    if (activeUser.userName != value.userName && !(userNamesConver.includes(value.userName))) {
-    
-                        return <option>
-                            <li key={index}>{value.userName}</li></option>
-                    }
-                })}
-      
-            </select>
-       
+            <div class="input-group mb-3">
+            <input
+            value={newConversation.username}
+            autoComplete="off"
+            className="form-control  textarea" rows="1" id="comment" placeholder="contact nickname..."></input>
+            </div>
+
+            <div class="input-group mb-3">
+            <input
+            value={newConversation.id}
+            autoComplete="off"
+            className="form-control  textarea" rows="1" id="comment" placeholder="contact username..."></input>
+            </div>
+
+            <div class="input-group mb-3">
+            <input
+            value={newConversation.server}
+            autoComplete="off"
+            className="form-control  textarea" rows="1" id="comment" placeholder="server address..."></input>
+            </div>
             </div>
             <div class="modal-footer">
             <button type="button" onClick={handleAdd} className="btn btn-success btn-sm addBut" data-dismiss="modal" style={{ width: "20%" }}>Add</button>
