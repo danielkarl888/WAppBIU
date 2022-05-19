@@ -5,24 +5,11 @@ import { useState, useEffect } from 'react';
 import activeUser from '../ManagingUsersList/activeUser';
 function MainView() {
     const [conversationsActiveUser, setConversationsActiveUser] = useState(activeUser.conversations);
-/*
-    useEffect(()=>{
-        fetch(`http://localhost:5030/api/Contacts`, {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json'
-          }, 
-      }).then(res=>{
-          if(res.ok){
-            return res.json();
-          } 
-      }).then(data =>{
-        setConversationsActiveUser(data)
-        console.log(conversationsActiveUser);
-      })
-      },[]) */
+
     //const [conversationsActiveUser, setConversationsActiveUser] = useState(activeUser.conversations);
     const [contact, setContact] = useState(conversationsActiveUser[0].username);
+    const [server, setServer] = useState(conversationsActiveUser[0].server);
+
     const [conversationNumber, setConversationNumber] = useState(0);
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
@@ -31,6 +18,9 @@ function MainView() {
     
     const contactChange = (newName) => {
         setContact(newName);
+    }
+    const serverChange = (server) => {
+        setServer(server);
     }
     return (
 
@@ -45,6 +35,7 @@ function MainView() {
                            lastMessageType={lastMessageType}
                            setLastMessageType={setLastMessageType}
                            setConversationsActiveUser={setConversationsActiveUser}
+                           serverChange={serverChange}
                             />
                  </span>
                 <span className="col rightside"> 
@@ -57,7 +48,8 @@ function MainView() {
                         setConversationNumber={setConversationNumber}
                         setLastMessage={setLastMessage}
                         setConversationMessages={setConversationMessages}
-
+                        conversation={conversation}
+                        server={server}
                          />
                 </span>
             </span>

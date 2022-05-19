@@ -1,10 +1,12 @@
 import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import contacts from "./contacts";
  
-function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLastMessageType,time,setContact,setConversationMessages,conversationsActiveUser,index}) {
+function Contact({name,lastMessageContent,lastMessageType,setLastMessage,setLastMessageType,time,setContact,
+    setConversationMessages,conversationsActiveUser,index,serverChange,server}) {
     const changeConversation = ()=>{
         console.log(name);
         setContact(name);
+        serverChange(server);
         console.log(index);
         setConversationMessages(conversationsActiveUser[index].messages);
         setLastMessage(conversationsActiveUser[index].messages[conversationsActiveUser[index].messages.length-1])

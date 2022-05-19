@@ -1,12 +1,13 @@
 import { useState } from "react";
+import activeUser from "../../ManagingUsersList/activeUser";
 import ImageUpload from "./ImageUpload";
 import VideoUpload from "./VideoUpload";
 import VoiceUpload from "./VoiceUpload";
 
-function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType,contact,setConversationMessages }) {
+function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType,contact,setConversationMessages,conversation,server }) {
     const handleSendText = (event) => {
         event.preventDefault();
-
+        console.log("contact is :" + contact);
         if(messageText.context!="" && contact!="")
         {
             fetch(`http://localhost:5030/api/Contacts/${contact}/messages`, {
@@ -23,10 +24,12 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                     //conversationMessages.push(messageText);
                 }
             })
+            //console.log(server);
+            TransferFetch(server);
             conversationMessages.push(messageText);
         }
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
-        console.log(conversationMessages);
+        //console.log(conversationMessages);
         setMessageText({
             src: "send",
             type: "text",
@@ -41,14 +44,26 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
         return i;
       }
       
-          
+    const TransferFetch= (server)=>{
+        fetch(`http://${server}/api/transfer`, {
+            method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({  
+                    "from": activeUser.userName,
+                    "to": contact,
+                    "content": messageText.context  
+          }) 
+        })
+    }      
     const handleMessageChange = (event) => {
         const today = new Date();
         let h = addZero(today.getHours());
         let m = addZero(today.getMinutes());
         var date = h + ":" + m;
         setMessageText({ ...messageText, context: event.target.value, time: date })
-        console.log(messageText);
+        //console.log(messageText);
     }
 
     const [messageText, setMessageText] = useState(
