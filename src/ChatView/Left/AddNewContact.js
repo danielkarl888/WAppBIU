@@ -11,19 +11,56 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
         event.preventDefault();
         const update = [...conversationsActiveUser, newConversation];
         setConversationsActiveUser(update);
+
+        
+
        }
     }
 
     const handleAddChange = (event) => {
+     
         setNewConversation({ username: newConversation.username,name: newConversation.name,
-                              server : newConversation.server, last:"", lastDate:"",
+                              server : newConversation.server,
                               messages: [{ src: "", type: "", context: "", time: "", id :"" }] })
+                              
+                              const update = [...conversationsActiveUser, newConversation];
+                              setConversationsActiveUser(update);
+                              
+      fetch(`http://localhost:5030/api/Contacts`, {
+                method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json   '
+                },
+                body: JSON.stringify({  
+                                        "id": newConversation.username,
+                                        "name": newConversation.name,
+                                        "server": newConversation.server
+              }) 
+            }).then(res=>{
+                if(res.ok){
+                   
+                }
+            })
+             
+                            
     }
+
+    const handleUserNameChange = (event) => {
+      setNewConversation({ ...newConversation, username: event.target.value })
+  }
+
+  const handleNameChange = (event) => {
+    setNewConversation({ ...newConversation, name: event.target.value })
+}
+const handleServerChange = (event) => {
+  setNewConversation({ ...newConversation, server: event.target.value })
+}
 
     const [newConversation, setNewConversation] = useState({
         username: "",
         name:"",
         server:"",
+        messages: [{ src: "", type: "", context: "", time: "", id :"" }]
     });
 
     const userNamesConver = [];
@@ -45,27 +82,31 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
             <div class="modal-body">
             <div class="input-group mb-3">
             <input
-            value={newConversation.username}
+           
+            onChange={handleNameChange}
+            value={newConversation.name}
             autoComplete="off"
             className="form-control  textarea" rows="1" id="comment" placeholder="contact nickname..."></input>
             </div>
 
             <div class="input-group mb-3">
             <input
-            value={newConversation.id}
+            onChange={handleUserNameChange}
+            value={newConversation.username}
             autoComplete="off"
             className="form-control  textarea" rows="1" id="comment" placeholder="contact username..."></input>
             </div>
 
             <div class="input-group mb-3">
             <input
+            onChange={handleServerChange}
             value={newConversation.server}
             autoComplete="off"
             className="form-control  textarea" rows="1" id="comment" placeholder="server address..."></input>
             </div>
             </div>
             <div class="modal-footer">
-            <button type="button" onClick={handleAdd} className="btn btn-success btn-sm addBut" data-dismiss="modal" style={{ width: "20%" }}>Add</button>
+            <button type="button" onClick={handleAddChange} className="btn btn-success btn-sm addBut" data-dismiss="modal" style={{ width: "20%" }}>Add</button>
               </div>
           </div>
         </div>

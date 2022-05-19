@@ -13,8 +13,15 @@ function MainView() {
     const [conversationNumber, setConversationNumber] = useState(0);
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
-    const [lastMessage, setLastMessage] = useState(conversationMessages[conversationMessages.length-1].context);
-    const [lastMessageType, setLastMessageType] = useState(conversationMessages[conversationMessages.length-1].type);
+
+    var context = "";
+    var type ="";
+    if(conversationMessages>0){
+        context= conversationMessages[conversationMessages.length-1].context;
+        type = conversationMessages[conversationMessages.length-1].type
+    }
+    const [lastMessage, setLastMessage] = useState(context);
+    const [lastMessageType, setLastMessageType] = useState(type);
     
     const contactChange = (newName) => {
         setContact(newName);
