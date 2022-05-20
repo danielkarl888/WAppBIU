@@ -26,7 +26,7 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
                               const update = [...conversationsActiveUser, newConversation];
                               setConversationsActiveUser(update);
                               
-      fetch(`http://localhost:5030/api/Contacts`, {
+      fetch(`http://localhost:5030/api/Contacts/?user=${activeUser.userName}`, {
                 method: 'POST',
                     headers: {
                     'Content-Type': 'application/json   '

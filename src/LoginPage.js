@@ -81,7 +81,7 @@ function LoginPage(){
         }).then(res=>res.json()).then((data)=>{activeUser.display=data.displayName; })
     }
     const conatctsFetch = (activeUser)=>{
-        fetch(`http://localhost:5030/api/Contacts`,  {
+        fetch(`http://localhost:5030/api/Contacts/?user=${activeUser.userName}`,  {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ function LoginPage(){
          })
     }
     const messagesFetch = (x2, user)=>{
-        fetch(`http://localhost:5030/api/Contacts/${user}/messages`,  {
+        fetch(`http://localhost:5030/api/Contacts/${user}/messages/?user=${activeUser.userName}`,  {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

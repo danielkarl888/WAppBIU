@@ -10,7 +10,7 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
         console.log("contact is :" + contact);
         if(messageText.context!="" && contact!="")
         {
-            fetch(`http://localhost:5030/api/Contacts/${contact}/messages`, {
+            fetch(`http://localhost:5030/api/Contacts/${contact}/messages/?user=${activeUser.userName}`, {
                 method: 'POST',
                     headers: {
                     'Content-Type': 'application/json   '
