@@ -49,6 +49,10 @@ function LoginPage(){
     const handlePasswordChange = (event) => {
         setNewUser({ ...newUser, password: event.target.value })
     }
+    function addZero(i) {
+        if (i < 10) { i = "0" + i }
+        return i;
+    }
 
     const handleSubmit = (event, newUser) => {
         event.preventDefault();
@@ -119,8 +123,8 @@ function LoginPage(){
                    const y = {  src: message.sent ? "send" : "recv" ,
                                 type: "text",
                                 context: message.content,
-                                time: (date.getHours() + ":" + date.getMinutes() + "\n" +
-                                      date.getUTCDate() + "/" + (date.getMonth() + 1)+ "/" + date.getFullYear()),
+                                time: (addZero(date.getHours()) + ":" + addZero(date.getMinutes()) + "\n" +
+                                      date.getUTCDate() + "/" + addZero((date.getMonth() + 1))+ "/" + date.getFullYear()),
                                 id:message.id}
                     //var date = new Date(Date.parse(message.created));
                     console.log(date.getHours() + ":" + date.getMinutes() + "\n" +
