@@ -114,11 +114,17 @@ function LoginPage(){
             .then((data)=>{
                 arr2 =[];
                 data.map((message, index)=> {
+                    var date = new Date(Date.parse(message.created));
+
                    const y = {  src: message.sent ? "send" : "recv" ,
                                 type: "text",
                                 context: message.content,
-                                time: message.created,
+                                time: (date.getHours() + ":" + date.getMinutes() + "\n" +
+                                      date.getUTCDate() + "/" + (date.getMonth() + 1)+ "/" + date.getFullYear()),
                                 id:message.id}
+                    //var date = new Date(Date.parse(message.created));
+                    console.log(date.getHours() + ":" + date.getMinutes() + "\n" +
+                    (date.getUTCDate() + "/" + (date.getMonth() + 1)+ "/" + date.getFullYear()));              
                     arr2.push(y);
                 })
                 //console.log(arr2);
