@@ -177,15 +177,16 @@ function LoginPage(){
                     <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>
-            <div className="form-floating mb-3 input-padding-5 p-3" id="login">
+            <div className="form-floating mb-3 input-padding-5 p-3 " id="login">
 
 
                     <div className="text-center fs-5" id="submit">
                         <span>not Registered? <Link to='/regi' className="link" id="changeToRegister">
                             Click here</Link> to Register!</span>
                     </div>
+                    <div className="d-flex justify-content-center">
                 <div className="col-3"></div><button type="submit" className="btn btn-primary btn-karl fs-4 m-3">Login</button><div className="col-3"></div>
-
+                </div>
                 {yes ? <LinkToChat /> : null}
 
                 
