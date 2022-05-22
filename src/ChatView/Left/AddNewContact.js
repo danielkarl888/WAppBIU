@@ -22,28 +22,40 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
         setNewConversation({ username: newConversation.username,name: newConversation.name,
                               server : newConversation.server,
                               messages: [{ src: "", type: "", context: "", time: "", id :"" }] })
+                              var server = newConversation.server;
                               
-                              const update = [...conversationsActiveUser, newConversation];
-                              setConversationsActiveUser(update);
-                              
-      fetch(`http://localhost:5030/api/Contacts/?user=${activeUser.userName}`, {
-                method: 'POST',
-                    headers: {
-                    'Content-Type': 'application/json   '
-                },
-                body: JSON.stringify({  
-                                        "id": newConversation.username,
-                                        "name": newConversation.name,
-                                        "server": newConversation.server
-              }) 
-            }).then(res=>{
-                if(res.ok){
-                   
-                }
-            })
-             
-                            
+                                fetch(`http://${server}/api/invitations`, {
+                                    method: 'POST',
+                                        headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({  
+                                            "from": activeUser.userName,
+                                            "to": newConversation.username,
+                                            "server": "localhost:5030"  
+                                  }) 
+                                }).then(res=>{
+                                  if(res.ok){
+                                    fetch(`http://localhost:5030/api/Contacts/?user=${activeUser.userName}`, {
+                                      method: 'POST',
+                                          headers: {
+                                          'Content-Type': 'application/json   '
+                                      },
+                                      body: JSON.stringify({  
+                                                              "id": newConversation.username,
+                                                              "name": newConversation.name,
+                                                              "server": newConversation.server
+                                    }) 
+                                  }).then(res=>{
+                                      if(res.ok){
+                                        const update = [...conversationsActiveUser, newConversation];
+                                        setConversationsActiveUser(update);
+                                      }
+                                  })
+                                  }
+                              })                
     }
+
 
     const handleUserNameChange = (event) => {
       setNewConversation({ ...newConversation, username: event.target.value })
