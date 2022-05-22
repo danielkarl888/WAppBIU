@@ -1,31 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import activeUser from "../../ManagingUsersList/activeUser";
 import ImageUpload from "./ImageUpload";
 import VideoUpload from "./VideoUpload";
 import VoiceUpload from "./VoiceUpload";
+import { HubConnectionBuilder } from '@microsoft/signalr';
 
-function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType,contact,setConversationMessages,conversation,server }) {
+function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType, contact, setConversationMessages, conversation, server }) {
     const handleSendText = (event) => {
         event.preventDefault();
         console.log("contact is :" + contact);
-        if(messageText.context!="" && contact!="")
-        {
+        if (messageText.context != "" && contact != "") {
             fetch(`http://localhost:5030/api/Contacts/${contact}/messages/?user=${activeUser.userName}`, {
                 method: 'POST',
-                    headers: {
+                headers: {
                     'Content-Type': 'application/json   '
                 },
-                body: JSON.stringify({  
-                                        "content": messageText.context
-              }) 
-            }).then(res=>{
-                if(res.ok){
-                    //console.log(1111);
-                    //conversationMessages.push(messageText);
+                body: JSON.stringify({
+                    "content": messageText.context
+                })
+            }).then(res => {
+                if (res.ok) {
                 }
             })
-            //console.log(server);
             TransferFetch(server);
+            /*
+            connection.start();
+            connection.send('Changed', messageText.context, messageText.time,contact);
+            */
             conversationMessages.push(messageText);
         }
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
@@ -35,32 +36,59 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
             type: "text",
             context: "",
             time: "",
-            id:""
+            id: ""
         });
         setLastMessageType("text");
     }
+/*
+    const [connection, setConnection] = useState(null);
+    useEffect(() => {
+        const newConnection = new HubConnectionBuilder()
+            .withUrl('http://localhost:5030/myHub')
+            .withAutomaticReconnect()
+            .build();
+
+        setConnection(newConnection);
+    }, []);
+    useEffect(() => {
+        if (connection) {
+            connection.start()
+                .then(result => {
+                    console.log('Connected!');
+                    connection.on('ChangeRecevied', (content, timeParam) => {
+                        messageText.context=content;
+                        messageText.time=timeParam;
+                        conversationMessages.push(messageText);
+                    });
+                })
+                .catch(e => console.log('Connection failed: ', e));
+        }
+    }, [connection]);
+    */
     function addZero(i) {
-        if (i < 10) {i = "0" + i}
+        if (i < 10) { i = "0" + i }
         return i;
-      }
-      
-    const TransferFetch= (server)=>{
+    }
+
+    const TransferFetch = (server) => {
         fetch(`http://${server}/api/transfer`, {
             method: 'POST',
-                headers: {
+            headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({  
-                    "from": activeUser.userName,
-                    "to": contact,
-                    "content": messageText.context  
-          }) 
+            body: JSON.stringify({
+                "from": activeUser.userName,
+                "to": contact,
+                "content": messageText.context
+            })
         })
-    }      
+    }
     const handleMessageChange = (event) => {
         var date = new Date();
-        setMessageText({ ...messageText, context: event.target.value, time: (addZero(date.getHours()) + ":" + addZero(date.getMinutes()) + "\n" +
-                                                                                date.getUTCDate() + "/" + addZero((date.getMonth() + 1))+ "/" + date.getFullYear()) })
+        setMessageText({
+            ...messageText, context: event.target.value, time: (addZero(date.getHours()) + ":" + addZero(date.getMinutes()) + "\n" +
+                date.getUTCDate() + "/" + addZero((date.getMonth() + 1)) + "/" + date.getFullYear())
+        })
         //console.log(messageText);
     }
 

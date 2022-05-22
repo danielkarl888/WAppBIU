@@ -1,3 +1,4 @@
+/*
 const userList = [{
     userName: 'daniel', display: 'dan', password: 'daniel1',
     conversations: [{
@@ -68,4 +69,4 @@ const userList = [{
     }]
 },
 ];
-export default userList;
+export default userList;*/

@@ -8,6 +8,7 @@ function LeftChat({ conversationsActiveUser, setContact, setConversationMessages
   lastMessage, setLastMessage, lastMessageType, setLastMessageType, setConversationsActiveUser, serverChange }) {
   const contacts = conversationsActiveUser.map((conver, index) => {
     if (conver.username != "")
+    {
     var lastMessageContent ="";
     var lastMessageType="";
     var time="";
@@ -31,7 +32,7 @@ function LeftChat({ conversationsActiveUser, setContact, setConversationMessages
       serverChange={serverChange}
       server={conver.server}
     />
-  })
+  }})
 
   return (
     <span>
