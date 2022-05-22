@@ -58,11 +58,9 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
         })
     }      
     const handleMessageChange = (event) => {
-        const today = new Date();
-        let h = addZero(today.getHours());
-        let m = addZero(today.getMinutes());
-        var date = h + ":" + m;
-        setMessageText({ ...messageText, context: event.target.value, time: date })
+        var date = new Date();
+        setMessageText({ ...messageText, context: event.target.value, time: (addZero(date.getHours()) + ":" + addZero(date.getMinutes()) + "\n" +
+                                                                                date.getUTCDate() + "/" + addZero((date.getMonth() + 1))+ "/" + date.getFullYear()) })
         //console.log(messageText);
     }
 
