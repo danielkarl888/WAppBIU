@@ -23,11 +23,11 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                 }
             })
             TransferFetch(server);
-            /*
-            connection.start();
-            connection.send('Changed', messageText.context, messageText.time,contact);
-            */
             conversationMessages.push(messageText);
+
+            //connection.start();
+            connection.send('Changed', messageText.context, messageText.time, contact);
+
         }
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         //console.log(conversationMessages);
@@ -40,14 +40,14 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
         });
         setLastMessageType("text");
     }
-/*
+
     const [connection, setConnection] = useState(null);
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
             .withUrl('http://localhost:5030/myHub')
             .withAutomaticReconnect()
             .build();
-
+        console.log(newConnection);
         setConnection(newConnection);
     }, []);
     useEffect(() => {
@@ -55,16 +55,31 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
             connection.start()
                 .then(result => {
                     console.log('Connected!');
-                    connection.on('ChangeRecevied', (content, timeParam) => {
-                        messageText.context=content;
-                        messageText.time=timeParam;
+                    connection.on('ChangeRecevied', (content, timeParam, username) => {
+                        console.log("on changed: "+ username);
+                        console.log("on changed activeuser: "+ activeUser.userName);
+
+                        if(activeUser.userName==username){
+                        messageText.context = content;
+                        messageText.time = timeParam;
+                        messageText.src = "recv";
+                        //console.log(messageText);
+                              
                         conversationMessages.push(messageText);
-                    });
+                        setMessageText({
+                            src: "send",
+                            type: "text",
+                            context: "",
+                            time: "",
+                            id: ""
+                        });
+                    }
+                });
                 })
                 .catch(e => console.log('Connection failed: ', e));
         }
     }, [connection]);
-    */
+
     function addZero(i) {
         if (i < 10) { i = "0" + i }
         return i;
