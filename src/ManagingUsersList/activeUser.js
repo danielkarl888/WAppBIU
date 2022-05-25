@@ -1,8 +1,6 @@
-const activeUser = {userName:"test", display:"test",
+const activeUser = {userName:"", display:"",
  conversations: [{ username: "", name:"", server:"",last:"", lastDate:"" ,
- messages: [{ src: "send", type: "text", context: "hi", time: "8:23", id:"" }
-            ,{ src: "recv", type: "text", context: "bii", time: "14:33", id:""}
-        ]
+ messages: [{ src: "", type: "", context: "", time: "", id:"" }] 
         }]
     };
 export default activeUser;
