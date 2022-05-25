@@ -19,7 +19,6 @@ function VoiceUpload({ conversationMessages, setLastMessage, setLastMessageType,
             let h = addZero(today.getHours());
             let m = addZero(today.getMinutes());
             var date = h + ":" + m;
-            // console.log(base64data);
             test={
                 src: "send",
                 type: "voice",

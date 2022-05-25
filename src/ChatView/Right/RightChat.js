@@ -7,7 +7,7 @@ import ReplayRow from './RepleyRow';
 import activeUser from '../../ManagingUsersList/activeUser';
 import { useEffect, useRef } from 'react'
 function RightChat({ conversationsActiveUser, contact, conversationNumber, conversationMessages,
-    setConversationsActiveUser, setConversationNumber, setLastMessage,setConversationMessages, conversation,server }) {
+    setConversationsActiveUser, setConversationNumber, setLastMessage,setConversationMessages, conversation,server,setContact }) {
 
         const messageRef = useRef();
 
@@ -71,6 +71,7 @@ function RightChat({ conversationsActiveUser, contact, conversationNumber, conve
                 setConversationMessages={setConversationMessages}
                 conversation={conversation}
                 server={server}
+                setContact={setContact}
             />
 
         </span>

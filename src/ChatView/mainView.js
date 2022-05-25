@@ -57,6 +57,7 @@ function MainView() {
                         setConversationMessages={setConversationMessages}
                         conversation={conversation}
                         server={server}
+                        setContact={contactChange}
                          />
                 </span>
             </span>

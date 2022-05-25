@@ -5,7 +5,77 @@ import VideoUpload from "./VideoUpload";
 import VoiceUpload from "./VoiceUpload";
 import { HubConnectionBuilder } from '@microsoft/signalr';
 
-function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType, contact, setConversationMessages, conversation, server }) {
+function ReplayRow({ conversationMessages, setConversationsActiveUser, setConversationNumber, setLastMessage, setLastMessageType, contact, setConversationMessages, conversation, server, setContact }) {
+    /*
+    async function fetchMessages() {
+        var arr = [];
+        var res2;
+        let res = await fetch(`http://localhost:5030/api/Contacts/${contact}/messages/?user=${activeUser.userName}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        res2 = await res.json();
+        console.log(res2);
+        res2.map((conver) => {
+            console.log("hii");
+            var x = {
+                src: "",
+                type: "text",
+                context: "",
+                time: "",
+                id: ""
+            }
+            var date = new Date(Date.parse(conver.created));
+
+            x.src = conver.sent ? "send" : "recv"
+            x.id = conver.id;
+            x.context = conver.content;
+            x.time= (addZero(date.getHours()) + ":" + addZero(date.getMinutes()) + "\n" +
+            date.getUTCDate() + "/" + addZero((date.getMonth() + 1))+ "/" + date.getFullYear())
+            //console.log(x);
+        })
+        console.log(res2);
+        console.log(arr);
+
+        //setConversationMessages(arr);
+    }
+    */
+    
+    const messagesFetch = ()=>{
+        
+        fetch(`http://localhost:5030/api/Contacts/${contact}/messages/?user=${activeUser.userName}`,  {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(res=>res.json())
+            .then((data)=>{
+                var arr2 =[];
+                data.map((message, index)=> {
+                    var date = new Date(Date.parse(message.created));
+
+                   const y = {  src: message.sent ? "send" : "recv" ,
+                                type: "text",
+                                context: message.content,
+                                time: (addZero(date.getHours()) + ":" + addZero(date.getMinutes()) + "\n" +
+                                      date.getUTCDate() + "/" + addZero((date.getMonth() + 1))+ "/" + date.getFullYear()),
+                                id:message.id}
+                    //var date = new Date(Date.parse(message.created));
+                    console.log(date.getHours() + ":" + date.getMinutes() + "\n" +
+                    (date.getUTCDate() + "/" + (date.getMonth() + 1)+ "/" + date.getFullYear()));              
+                    arr2.push(y);
+                })
+                console.log(arr2);
+                setConversationMessages(arr2);
+                //activeUser.conversations[contactNumber].messages = arr2;
+                //console.log(activeUser);
+         })
+    }
+
+    //messagesFetch();
     const handleSendText = (event) => {
         event.preventDefault();
         console.log("contact is :" + contact);
@@ -23,11 +93,11 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                 }
             })
             TransferFetch(server);
+            //messagesFetch();
             conversationMessages.push(messageText);
-
+            //console.log(connection.state);
             //connection.start();
-            connection.send('Changed', messageText.context, messageText.time, contact);
-
+            //connection.invoke('Changed', messageText.context, messageText.time, activeUser.userName, contact);
         }
         setLastMessage(conversationMessages[conversationMessages.length - 1].context);
         //console.log(conversationMessages);
@@ -40,46 +110,57 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
         });
         setLastMessageType("text");
     }
-
+/*
     const [connection, setConnection] = useState(null);
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
             .withUrl('http://localhost:5030/myHub')
             .withAutomaticReconnect()
             .build();
-        console.log(newConnection);
         setConnection(newConnection);
+
     }, []);
     useEffect(() => {
         if (connection) {
             connection.start()
                 .then(result => {
                     console.log('Connected!');
-                    connection.on('ChangeRecevied', (content, timeParam, username) => {
-                        console.log("on changed: "+ username);
-                        console.log("on changed activeuser: "+ activeUser.userName);
+                    connection.on('ChangeRecevied', (senderUser, recvUser, content, timeParam) => {
+                        console.log("senderUser: " + senderUser);
+                        console.log("recvUser: " + recvUser);
 
-                        if(activeUser.userName==username){
-                        messageText.context = content;
-                        messageText.time = timeParam;
-                        messageText.src = "recv";
-                        //console.log(messageText);
-                              
-                        conversationMessages.push(messageText);
-                        setMessageText({
-                            src: "send",
-                            type: "text",
-                            context: "",
-                            time: "",
-                            id: ""
-                        });
-                    }
-                });
+                        if (activeUser.userName == recvUser) {
+
+                            //setContact(username);
+                            messageText.context = content;
+                            messageText.time = timeParam;
+                            messageText.src = "recv";
+                            //console.log(conversationMessages);
+
+                            console.log(messageText);
+                            conversationMessages.push(messageText);
+                            console.log(conversationMessages);
+
+
+                            setLastMessage(conversationMessages[conversationMessages.length - 1].context);
+
+
+
+                            setMessageText({
+                                src: "send",
+                                type: "text",
+                                context: "",
+                                time: "",
+                                id: ""
+                            });
+                        }
+
+                    });
                 })
                 .catch(e => console.log('Connection failed: ', e));
         }
     }, [connection]);
-
+*/
     function addZero(i) {
         if (i < 10) { i = "0" + i }
         return i;
@@ -112,7 +193,8 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
             src: "send",
             type: "text",
             context: "",
-            time: ""
+            time: "",
+            id: ""
         }
 
     );
