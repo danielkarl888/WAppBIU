@@ -13,6 +13,7 @@ function MainView() {
     const [conversationNumber, setConversationNumber] = useState(0);
     const [conversation, setConversation] = useState(activeUser.conversations[conversationNumber]);
     const [conversationMessages, setConversationMessages] = useState(conversation.messages);
+    
 
     var context = "";
     var type ="";
