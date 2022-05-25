@@ -18,11 +18,11 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
     }
 
     const handleAddChange = (event) => {
+
       if(newConversation.username == ''|| newConversation.name == ''|| newConversation.server == ''){
-        setNewConversation({username: '', name:'',server:'' }) 
-        return;
+        setNewConversation({username: "", name:"",server:"",  messages: [{ src: "", type: "", context: "", time: "", id :"" }] }) 
       }
-     
+      else{
         setNewConversation({ username: newConversation.username,name: newConversation.name,
                               server : newConversation.server,
                               messages: [{ src: "", type: "", context: "", time: "", id :"" }] })
@@ -57,7 +57,8 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
                                   })
                                   }
                               })  
-                              setNewConversation({username: '', name:'',server:'' })              
+                            }
+                              setNewConversation({username: '', name:'',server:'',  messages: [{ src: "", type: "", context: "", time: "", id :"" }] })              
     }
 
 
@@ -131,8 +132,3 @@ const handleServerChange = (event) => {
 }
 
 export default AddNewContact;          
-
-
-
-
-
