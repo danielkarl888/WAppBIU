@@ -18,12 +18,15 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
     }
 
     const handleAddChange = (event) => {
-     
+
+      if(newConversation.username == ''|| newConversation.name == ''|| newConversation.server == ''){
+        setNewConversation({username: "", name:"",server:"",  messages: [{ src: "", type: "", context: "", time: "", id :"" }] }) 
+      }
+      else{
         setNewConversation({ username: newConversation.username,name: newConversation.name,
                               server : newConversation.server,
                               messages: [{ src: "", type: "", context: "", time: "", id :"" }] })
-                              var server = newConversation.server;
-                              
+                              var server = newConversation.server
                                 fetch(`http://${server}/api/invitations`, {
                                     method: 'POST',
                                         headers: {
@@ -53,7 +56,9 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
                                       }
                                   })
                                   }
-                              })                
+                              })  
+                            }
+                              setNewConversation({username: '', name:'',server:'',  messages: [{ src: "", type: "", context: "", time: "", id :"" }] })              
     }
 
 
@@ -98,7 +103,7 @@ const handleServerChange = (event) => {
             onChange={handleNameChange}
             value={newConversation.name}
             autoComplete="off"
-            className="form-control  textarea" rows="1" id="comment" placeholder="contact nickname..."></input>
+            className="form-control textarea" rows="1" id="comment" placeholder="contact nickname..."></input>
             </div>
 
             <div class="input-group mb-3">
@@ -127,8 +132,3 @@ const handleServerChange = (event) => {
 }
 
 export default AddNewContact;          
-
-
-
-
-
