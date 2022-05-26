@@ -92,9 +92,16 @@ function LoginPage(){
                                  messages: []}
                     messagesFetch(x, contact.id);
                     arr.push(x);
-
                 })
-                activeUser.conversations = arr;
+                if (arr.length != 0) {
+                    activeUser.conversations = arr;
+                } else {
+                    activeUser.conversations = [{
+                        username: "", name: "", server: "", last: "", lastDate: "",
+                        messages: [{ src: "send", type: "text", context: "", time: "", id: "" }]
+                    }]
+                }    
+                
                 console.log(activeUser);
          })
     }
