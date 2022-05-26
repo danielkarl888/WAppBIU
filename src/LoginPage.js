@@ -31,17 +31,7 @@ function LoginPage(){
             }
         })
     },[newUser.userName])
-    /*
-    useEffect(()=>{
-        fetch(`http://localhost:5030/api/Contacts`)
-        .then(res=>{
-            if(res.ok){
-                return res.json();  
-            } 
-        }).then(data=>console.log(data));
-    },[yes])
 
-*/
     
     const handleUserNameChange = (event) => {
         setNewUser({ ...newUser, userName: event.target.value })

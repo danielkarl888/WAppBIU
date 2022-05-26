@@ -4,7 +4,7 @@ import userList from "../../ManagingUsersList/userList";
 
 
 
-function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) {
+function AddNewContact({ conversationsActiveUser, setConversationsActiveUser, setContact,setContact2 }) {
     
     const handleAdd = (event) => {
         if(newConversation.username!="select new contact" && userNamesConver[userNamesConver.length-1]!=newConversation.username){
@@ -26,6 +26,7 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
         setNewConversation({ username: newConversation.username,name: newConversation.name,
                               server : newConversation.server,
                               messages: [{ src: "", type: "", context: "", time: "", id :"" }] })
+                              setContact(newConversation.username);
                               var server = newConversation.server
                                 fetch(`http://${server}/api/invitations`, {
                                     method: 'POST',
@@ -53,6 +54,7 @@ function AddNewContact({ conversationsActiveUser, setConversationsActiveUser }) 
                                       if(res.ok){
                                         const update = [...conversationsActiveUser, newConversation];
                                         setConversationsActiveUser(update);
+                                        setContact2(newConversation.username);
                                       }
                                   })
                                   }

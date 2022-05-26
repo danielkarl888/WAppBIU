@@ -44,6 +44,8 @@ function MainView() {
                            setLastMessageType={setLastMessageType}
                            setConversationsActiveUser={setConversationsActiveUser}
                            serverChange={serverChange}
+                           setContact2={setContact}
+                           contact={contact}
                             />
                  </span>
                 <span className="col rightside"> 

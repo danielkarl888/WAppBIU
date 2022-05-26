@@ -58,8 +58,10 @@ function RegisterPage() {
                 if(res.ok){
                     activeUser.userName = newUser.userName;
                     activeUser.display = newUser.display;
-                    activeUser.conversations=[{ username: "", name:"", server:"",last:"", lastDate:"" ,
-                     messages : [{ src: "send", type: "text", context: "", time: "", id:"" }]}]
+                    activeUser.conversations = [{
+                        username: "", name: "", server: "", last: "", lastDate: "",
+                        messages: [{ src: "send", type: "text", context: "", time: "", id: "" }]
+                    }]
                     console.log(activeUser);
                 }
             })

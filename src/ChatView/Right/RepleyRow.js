@@ -145,17 +145,33 @@ function ReplayRow({ conversationMessages, setConversationsActiveUser, setConver
                     connection.on('ChangeRecevied', (senderUser, recvUser, content, timeParam) => {
                         console.log("senderUser: " + senderUser);
                         console.log("recvUser: " + recvUser);
-
+                        console.log("the active is " + activeUser.userName);
+                        console.log("the current contact is " + contact);
                         if (activeUser.userName == recvUser) {
                             //setContact(username);
                             messageText.context = content;
                             messageText.time = timeParam;
                             messageText.src = "recv";
+                            activeUser.conversations.map(conver=>{
+                                if(conver.username==senderUser){
+                                    conver.messages.push(messageText);
+                                    setLastMessage(messageText.context);
+                                    setContact(senderUser);
+                                }
+                            });
                             //console.log(conversationMessages);
-                            console.log(messageText);
-                            conversationMessages.push(messageText);
-                            console.log(conversationMessages);
-                            setLastMessage(conversationMessages[conversationMessages.length - 1].context);
+                            //console.log(messageText);
+                            // CHECK HERE
+                            //var arr = conversationMessages;
+                            //arr.push(messageText);
+                            //setConversationMessages(arr);
+                            //setConversationMessages(conversationMessages.push(messageText));
+                            //let temp = [...conversationMessages];
+                            //temp.push(messageText);
+                            //setConversationMessages(temp);
+                            //conversationMessages.push(messageText);
+                           // console.log(conversationMessages);
+                            //setLastMessage(conversationMessages[conversationMessages.length - 1].context);
                             setMessageText({
                                 src: "send",
                                 type: "text",

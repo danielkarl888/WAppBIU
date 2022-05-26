@@ -1,7 +1,7 @@
 import activeUser from "../../ManagingUsersList/activeUser";
 import { useState } from "react";
 import AddNewContact from "./AddNewContact";
-function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser }) {
+function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser,setContact,setContact2 }) {
 
 
     return (
@@ -24,6 +24,8 @@ function TopHeadingLeft({ conversationsActiveUser, setConversationsActiveUser })
         </div>
         <AddNewContact conversationsActiveUser={conversationsActiveUser}
         setConversationsActiveUser={ setConversationsActiveUser}
+        setContact={setContact}
+        setContact2={setContact2}
         />
         </>
 
